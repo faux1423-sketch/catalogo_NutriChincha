@@ -1,0 +1,3051 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Del Campo & La Purita — Catálogo Orgánico Perú</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Fraunces para toques editoriales orgánicos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF7F2',
+            sand: '#F2ECE1',
+            cacao: '#4A3222',
+            cacaoLight: '#6B4B36',
+            leaf: '#4C7C59',
+            leafDark: '#3A6144',
+            terracotta: '#C86D51',
+            terracottaDark: '#B0583D',
+            ochre: '#D99B26',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Fraunces', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #FAF7F2;
+      color: #4A3222;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Barra de desplazamiento sutil */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F2ECE1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C5B8A5;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4A3222;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-leaf/20 selection:text-cacao">
+
+  <!-- Barra superior informativa -->
+  <div class="bg-cacao text-cream text-xs py-2 px-4 text-center tracking-wide">
+    <span>🌿 Productos 100% Naturales, Orgánicos y Artesanales • Envíos a todo el Perú 🇵🇪</span>
+  </div>
+
+  <!-- Header Sticky -->
+  <header class="sticky top-0 z-30 bg-cream/95 backdrop-blur-md border-b border-cacao/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-3">
+      <!-- Marca / Logo -->
+      <div class="flex items-center gap-3 min-w-0">
+        <div class="w-10 h-10 rounded-2xl bg-leaf flex items-center justify-center text-cream shrink-0 shadow-sm">
+          <!-- Icono Hoja Orgánica -->
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+          </svg>
+        </div>
+        <div class="truncate">
+          <h1 id="headerStoreName" class="font-serif font-bold text-lg sm:text-xl text-cacao leading-tight truncate">
+            Almacén Natural Perú
+          </h1>
+          <p class="text-xs text-cacaoLight/80 truncate">Del Campo a tu Casa • La Purita • Globulitos</p>
+        </div>
+      </div>
+
+      <!-- Buscador en Escritorio -->
+      <div class="hidden md:flex flex-1 max-w-md mx-4">
+        <div class="relative w-full">
+          <svg class="w-4 h-4 text-cacaoLight/60 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" stroke-width="2"/>
+            <path d="m21 21-4.3-4.3" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input
+            type="text"
+            id="searchInputDesktop"
+            placeholder="Buscar quinua, lúcuma, cacao, sin gluten..."
+            class="w-full pl-10 pr-9 py-2.5 rounded-2xl bg-sand/80 border border-cacao/10 text-sm text-cacao placeholder-cacaoLight/60 focus:outline-none focus:ring-2 focus:ring-leaf focus:bg-white transition"
+          />
+          <button id="clearSearchDesktop" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-cacaoLight/60 hover:text-cacao text-xs font-bold p-1">✕</button>
+        </div>
+      </div>
+
+      <!-- Botones de Acción (Configuración + Carrito) -->
+      <div class="flex items-center gap-2 shrink-0">
+        <!-- Botón Configuración Rápida -->
+        <button
+          id="openSettingsBtn"
+          title="Configurar tienda y WhatsApp"
+          class="p-2.5 rounded-2xl bg-sand hover:bg-cacao/10 text-cacao transition flex items-center gap-1.5 text-xs font-medium"
+          aria-label="Configuración de la tienda"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          <span class="hidden sm:inline">Tienda</span>
+        </button>
+
+        <!-- Botón Carrito -->
+        <button
+          id="openCartBtn"
+          class="relative px-4 py-2.5 rounded-2xl bg-cacao hover:bg-cacaoLight text-cream font-semibold text-sm flex items-center gap-2 shadow-sm transition active:scale-95"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span class="hidden sm:inline">Mi Pedido</span>
+          <span id="cartBadge" class="bg-terracotta text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Buscador Móvil -->
+    <div class="md:hidden px-4 pb-3">
+      <div class="relative w-full">
+        <svg class="w-4 h-4 text-cacaoLight/60 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8" stroke-width="2"/>
+          <path d="m21 21-4.3-4.3" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input
+          type="text"
+          id="searchInputMobile"
+          placeholder="Buscar producto, ingrediente o marca..."
+          class="w-full pl-10 pr-9 py-2.5 rounded-2xl bg-sand/90 border border-cacao/10 text-sm text-cacao placeholder-cacaoLight/60 focus:outline-none focus:ring-2 focus:ring-leaf focus:bg-white transition"
+        />
+        <button id="clearSearchMobile" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-cacaoLight/60 hover:text-cacao text-xs font-bold p-1">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner Compacto -->
+  <section class="bg-gradient-to-br from-sand via-cream to-sand/70 border-b border-cacao/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="max-w-2xl text-center md:text-left">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-leaf/15 text-leafDark text-xs font-semibold mb-2.5">
+          🌱 Catálogo Oficial • Precios en Soles (S/.)
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-cacao leading-tight">
+          Nutrición real del campo peruano directo a tu mesa
+        </h2>
+        <p class="text-sm sm:text-base text-cacaoLight mt-2">
+          Explora snacks horneados, granolas artesanales, galletas sin gluten, cremas de frutos secos y superfoods fortificados con hierro. Arma tu carrito y envía tu pedido por WhatsApp en segundos.
+        </p>
+      </div>
+      <!-- Tarjeta resumen de marcas -->
+      <div class="flex flex-wrap justify-center gap-2.5 shrink-0">
+        <button onclick="filterByBrand('Del Campo a tu Casa')" class="brand-chip px-3.5 py-2 rounded-2xl bg-white border border-cacao/10 shadow-xs hover:border-leaf transition text-left flex items-center gap-2.5">
+          <span class="w-3 h-3 rounded-full bg-leaf"></span>
+          <div>
+            <p class="text-xs font-bold text-cacao">Del Campo a tu Casa</p>
+            <p class="text-[11px] text-cacaoLight">Snacks & Superfoods</p>
+          </div>
+        </button>
+        <button onclick="filterByBrand('La Purita')" class="brand-chip px-3.5 py-2 rounded-2xl bg-white border border-cacao/10 shadow-xs hover:border-terracotta transition text-left flex items-center gap-2.5">
+          <span class="w-3 h-3 rounded-full bg-terracotta"></span>
+          <div>
+            <p class="text-xs font-bold text-cacao">La Purita</p>
+            <p class="text-[11px] text-cacaoLight">Galletas, Pops & Cremas</p>
+          </div>
+        </button>
+        <button onclick="filterByBrand('Globulitos')" class="brand-chip px-3.5 py-2 rounded-2xl bg-white border border-cacao/10 shadow-xs hover:border-red-600 transition text-left flex items-center gap-2.5">
+          <span class="w-3 h-3 rounded-full bg-red-600"></span>
+          <div>
+            <p class="text-xs font-bold text-cacao">Globulitos</p>
+            <p class="text-[11px] text-cacaoLight">Alto en Hierro Hemínico</p>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barra de Filtros: Categorías y Etiquetas Dietéticas -->
+  <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-5 pb-2">
+    <!-- Categorías (Scroll horizontal en móvil) -->
+    <div id="categoryTabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2">
+      <!-- Se renderizan dinámicamente con JS -->
+    </div>
+
+    <!-- Etiquetas dietéticas y filtros activos -->
+    <div class="flex flex-wrap items-center justify-between gap-3 mt-3 pt-3 border-t border-cacao/10">
+      <div class="flex flex-wrap items-center gap-2" id="dietaryFilters">
+        <span class="text-xs font-semibold text-cacaoLight mr-1">Etiquetas:</span>
+        <button data-tag="Sin Gluten" class="tag-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-white border border-cacao/15 text-cacao hover:border-leaf transition flex items-center gap-1.5">
+          🌾 Sin Gluten
+        </button>
+        <button data-tag="Vegano" class="tag-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-white border border-cacao/15 text-cacao hover:border-leaf transition flex items-center gap-1.5">
+          🌱 Vegano
+        </button>
+        <button data-tag="Sin Azúcar" class="tag-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-white border border-cacao/15 text-cacao hover:border-leaf transition flex items-center gap-1.5">
+          🍃 Sin Azúcar
+        </button>
+        <button data-tag="Alto en Hierro" class="tag-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-white border border-cacao/15 text-cacao hover:border-leaf transition flex items-center gap-1.5">
+          ⚡ Alto en Hierro
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3 text-xs text-cacaoLight">
+        <span id="resultsCount" class="font-medium">Cargando productos...</span>
+        <button id="resetFiltersBtn" class="hidden text-terracotta font-semibold hover:underline">
+          Limpiar filtros
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid Principal de Productos -->
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <!-- Tarjetas generadas por JavaScript -->
+    </div>
+
+    <!-- Estado vacío -->
+    <div id="emptyState" class="hidden text-center py-16 px-4">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-3xl bg-sand flex items-center justify-center text-3xl">
+        🌿
+      </div>
+      <h3 class="font-serif text-xl font-bold text-cacao">No encontramos productos con esos filtros</h3>
+      <p class="text-sm text-cacaoLight mt-1 max-w-md mx-auto">
+        Intenta buscar otro ingrediente (como quinua, maní, cacao o panela) o limpia los filtros activos.
+      </p>
+      <button onclick="resetAllFilters()" class="mt-4 px-5 py-2.5 rounded-2xl bg-leaf text-white text-sm font-semibold hover:bg-leafDark transition">
+        Ver todo el catálogo
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-cacao text-cream/90 mt-12 border-t border-cacao/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div class="text-center sm:text-left">
+        <p id="footerStoreName" class="font-serif font-bold text-base text-cream">Almacén Natural Perú</p>
+        <p class="text-cream/70 mt-1">Productos saludables, orgánicos y artesanales • Precios en Soles (S/.)</p>
+      </div>
+      <div class="flex items-center gap-4 text-cream/80">
+        <span>📱 Pedidos directos por WhatsApp</span>
+        <span>•</span>
+        <span>💳 Yape / Plin / Transferencia</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       MODAL DE DETALLE DE PRODUCTO
+  ====================================================================== -->
+  <div id="productModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-cacao/60 backdrop-blur-xs">
+    <div class="bg-cream rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-cacao/10 animate-fade-in">
+      <div id="productModalContent">
+        <!-- Contenido dinámico -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL DE CONFIGURACIÓN RÁPIDA DE LA TIENDA
+  ====================================================================== -->
+  <div id="settingsModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-cacao/60 backdrop-blur-xs">
+    <div class="bg-cream rounded-3xl max-w-md w-full p-6 shadow-2xl border border-cacao/10 animate-fade-in">
+      <div class="flex items-center justify-between pb-3 border-b border-cacao/10">
+        <div class="flex items-center gap-2">
+          <span class="p-2 rounded-xl bg-leaf/15 text-leafDark">⚙️</span>
+          <h3 class="font-serif text-lg font-bold text-cacao">Configurar Tienda</h3>
+        </div>
+        <button id="closeSettingsBtn" class="p-2 rounded-xl hover:bg-sand text-cacaoLight hover:text-cacao">✕</button>
+      </div>
+
+      <p class="text-xs text-cacaoLight mt-3">
+        Personaliza el nombre de tu tienda y el número de WhatsApp donde recibirás los pedidos de tus clientes.
+      </p>
+
+      <form id="settingsForm" class="mt-4 space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-cacao mb-1">Nombre de la Tienda</label>
+          <input
+            type="text"
+            id="settingStoreName"
+            required
+            placeholder="Ej. Vida Sana Perú"
+            class="w-full px-3.5 py-2.5 rounded-2xl bg-white border border-cacao/15 text-sm text-cacao focus:outline-none focus:ring-2 focus:ring-leaf"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-cacao mb-1">Número de WhatsApp (con código de país 51)</label>
+          <input
+            type="tel"
+            id="settingWhatsapp"
+            required
+            placeholder="Ej. 51987654321"
+            class="w-full px-3.5 py-2.5 rounded-2xl bg-white border border-cacao/15 text-sm text-cacao focus:outline-none focus:ring-2 focus:ring-leaf"
+          />
+          <p class="text-[11px] text-cacaoLight mt-1">Solo números, sin signos (+). Ejemplo Perú: 51999888777</p>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-2">
+          <button type="button" id="cancelSettingsBtn" class="px-4 py-2.5 rounded-2xl bg-sand text-cacao text-xs font-semibold hover:bg-cacao/10 transition">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2.5 rounded-2xl bg-leaf text-white text-xs font-semibold hover:bg-leafDark transition shadow-sm">
+            Guardar Cambios
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       CARRITO LATERAL DESLIZABLE (DRAWER)
+  ====================================================================== -->
+  <div id="cartOverlay" class="fixed inset-0 z-40 hidden bg-cacao/50 backdrop-blur-xs transition-opacity"></div>
+
+  <aside
+    id="cartDrawer"
+    class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-cream shadow-2xl border-l border-cacao/15 transform translate-x-full transition-transform duration-300 flex flex-col"
+  >
+    <!-- Header del Carrito -->
+    <div class="px-5 py-4 bg-sand/70 border-b border-cacao/10 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-2xl bg-cacao text-cream flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+        </span>
+        <div>
+          <h3 class="font-serif font-bold text-lg text-cacao leading-none">Tu Canasta Saludable</h3>
+          <p id="cartHeaderSubtitle" class="text-xs text-cacaoLight mt-1">0 productos seleccionados</p>
+        </div>
+      </div>
+      <button id="closeCartBtn" class="p-2 rounded-xl hover:bg-cacao/10 text-cacao transition" aria-label="Cerrar carrito">
+        ✕
+      </button>
+    </div>
+
+    <!-- Lista de Productos en el Carrito + Datos del Cliente -->
+    <div class="flex-1 overflow-y-auto px-5 py-4 space-y-5">
+      <!-- Items -->
+      <div id="cartItemsContainer" class="space-y-3">
+        <!-- Se llena dinámicamente -->
+      </div>
+
+      <!-- Formulario de Datos para el Pedido por WhatsApp -->
+      <div id="checkoutFormSection" class="hidden bg-white rounded-3xl p-4 border border-cacao/10 space-y-3.5 shadow-xs">
+        <h4 class="font-serif font-bold text-sm text-cacao flex items-center gap-1.5">
+          📋 Datos para tu entrega
+        </h4>
+
+        <div>
+          <label class="block text-xs font-semibold text-cacaoLight mb-1">Tu Nombre Completo *</label>
+          <input
+            type="text"
+            id="customerName"
+            placeholder="Ej. María Fernanda López"
+            class="w-full px-3.5 py-2 rounded-xl bg-cream border border-cacao/15 text-sm text-cacao focus:outline-none focus:ring-2 focus:ring-leaf"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-cacaoLight mb-1">Distrito y Dirección de entrega *</label>
+          <input
+            type="text"
+            id="customerAddress"
+            placeholder="Ej. Miraflores, Av. Larco 450 Dpto 302"
+            class="w-full px-3.5 py-2 rounded-xl bg-cream border border-cacao/15 text-sm text-cacao focus:outline-none focus:ring-2 focus:ring-leaf"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-cacaoLight mb-1">Método de Pago</label>
+          <div class="grid grid-cols-3 gap-2">
+            <label class="cursor-pointer">
+              <input type="radio" name="paymentMethod" value="Yape" checked class="peer sr-only" />
+              <div class="text-center py-2 px-2 rounded-xl border border-cacao/15 text-xs font-semibold text-cacao peer-checked:bg-leaf peer-checked:text-white peer-checked:border-leaf transition">
+                Yape
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="paymentMethod" value="Plin" class="peer sr-only" />
+              <div class="text-center py-2 px-2 rounded-xl border border-cacao/15 text-xs font-semibold text-cacao peer-checked:bg-leaf peer-checked:text-white peer-checked:border-leaf transition">
+                Plin
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="paymentMethod" value="Transferencia" class="peer sr-only" />
+              <div class="text-center py-2 px-2 rounded-xl border border-cacao/15 text-xs font-semibold text-cacao peer-checked:bg-leaf peer-checked:text-white peer-checked:border-leaf transition">
+                Transferencia
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-cacaoLight mb-1">Nota adicional (opcional)</label>
+          <input
+            type="text"
+            id="customerNote"
+            placeholder="Ej. Entregar por la tarde, tocar timbre..."
+            class="w-full px-3.5 py-2 rounded-xl bg-cream border border-cacao/15 text-sm text-cacao focus:outline-none focus:ring-2 focus:ring-leaf"
+          />
+        </div>
+
+        <!-- Número WhatsApp destino editable rápidamente -->
+        <div class="pt-2 border-t border-cacao/10 flex items-center justify-between text-[11px] text-cacaoLight">
+          <span>WhatsApp tienda: <strong id="drawerWhatsappDisplay" class="text-cacao">+51 999 888 777</strong></span>
+          <button type="button" onclick="openSettingsModal()" class="text-leaf font-semibold hover:underline">Cambiar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer del Carrito con Subtotal y Botón WhatsApp -->
+    <div id="cartFooter" class="hidden px-5 py-4 bg-white border-t border-cacao/10 space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-sm text-cacaoLight font-medium">Subtotal estimado</span>
+        <span id="cartSubtotal" class="font-serif text-2xl font-bold text-cacao">S/. 0.00</span>
+      </div>
+
+      <button
+        id="sendWhatsappBtn"
+        class="w-full py-3.5 px-4 rounded-2xl bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-sm shadow-md hover:shadow-lg transition flex items-center justify-center gap-2.5 active:scale-[0.99]"
+      >
+        <!-- Icono WhatsApp SVG -->
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+        </svg>
+        <span>Enviar Pedido por WhatsApp</span>
+      </button>
+
+      <div class="flex items-center justify-between pt-1">
+        <button id="copyOrderBtn" type="button" class="text-xs text-cacaoLight hover:text-cacao font-medium underline">
+          Copiar texto del pedido
+        </button>
+        <button id="clearCartBtn" type="button" class="text-xs text-terracotta hover:underline font-medium">
+          Vaciar canasta
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast de notificación flotante -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden bg-cacao text-cream px-4 py-2.5 rounded-2xl shadow-xl text-xs font-semibold items-center gap-2 animate-fade-in">
+    <span id="toastIcon">✅</span>
+    <span id="toastMessage">Producto agregado</span>
+  </div>
+
+  <!-- =====================================================================
+       BASE DE DATOS COMPLETA DEL CATÁLOGO & LÓGICA INTERACTIVA
+  ====================================================================== -->
+  <script>
+    // 1. CONFIGURACIÓN DE LA TIENDA (Persistente en localStorage)
+    const DEFAULT_CONFIG = {
+      storeName: 'Almacén Natural Perú',
+      whatsapp: '51999888777'
+    };
+
+    let storeConfig = JSON.parse(localStorage.getItem('organicStoreConfig')) || { ...DEFAULT_CONFIG };
+
+    // 2. CATÁLOGO COMPLETO EXTRAÍDO DEL PDF (Todos los productos, variantes, precios en S/., ingredientes y sellos)
+    const PRODUCTS = [
+      // ==================== SNACKS SALUDABLES ====================
+     {
+        id: 'snk-01',
+        name: 'Quinua Crunch Frutos Rojos',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Mezcla crocante de bolitas de quinua natural y quinua con arándanos. Ideal para yogurt, frutas o comer solo.',
+        ingredients: 'Granos de quinua y arroz extruidos, arándanos naturales, maíz morado.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 15g', price: 2.50 }],
+        images: [
+          'https://delcampoatucasaperu.com/wp-content/uploads/2025/04/1-1.jpg',
+          'https://delcampoatucasaperu.com/wp-content/uploads/2025/06/BTS_INGREDIENTES-1080-x-1080-px-1.jpg'
+        ]
+      },
+      {
+        id: 'snk-02',
+        name: 'Quinua Crunch Cacao',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Granos de quinua y arroz extruidos bañados con cacao natural, arándanos y maíz morado.',
+        ingredients: 'Granos de quinua y arroz extruidos, cacao natural, arándanos, maíz morado natural.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 15g', price: 2.50 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2025/06/BTS_INGREDIENTES-1080-x-1080-px.jpg'
+      },
+      {
+        id: 'snk-03',
+        name: 'Infladitos de Quinua Camotito-Zanahoria',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Snacks horneados, suaves y crocantes elaborados con quinua, camote y zanahoria natural.',
+        ingredients: 'Quinua, arroz, camote, zanahoria y condimentos naturales. Horneado.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Personal 15g', price: 3.00 },
+          { label: 'Familiar 150g', price: 16.00 }
+        ],
+        images: [
+          'https://delcampoatucasaperu.com/wp-content/uploads/2025/06/7-1.jpg',
+          'https://delcampoatucasaperu.com/wp-content/uploads/2025/10/INFLADITOS-CAMOTITO-150GR.jpg'
+        ]
+      },
+      {
+        id: 'snk-04',
+        name: 'Infladitos Andinos Cúrcuma',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Snack horneado con cúrcuma andina, reconocida por sus propiedades antiinflamatorias. Apto +09 meses en formato familiar.',
+        ingredients: 'Quinua, arroz, cúrcuma natural y especias suaves. Horneado.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Personal 15g', price: 3.00 },
+          { label: 'Familiar 150g (+09m)', price: 16.00 }
+        ],
+        images: [
+          'https://delcampoatucasaperu.com/wp-content/uploads/2023/06/5-1.jpg',
+          'https://delcampoatucasaperu.com/wp-content/uploads/2023/06/infladitos-curcuma-600x600.jpg'
+        ]
+
+      },
+      {
+        id: 'snk-05',
+        name: 'Infladitos de Quinua Queso',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Snacks horneados y crocantes con sabor a queso cheddar y condimentos 100% naturales.',
+        ingredients: 'Quinua, arroz extruido, queso cheddar en polvo y condimentos naturales.',
+        tags: ['Sin Gluten'],
+        variants: [
+          { label: 'Personal 15g', price: 3.00 },
+          { label: 'Familiar 150g', price: 16.00 }
+        ],
+        images: [
+          'https://delcampoatucasaperu.com/wp-content/uploads/2025/06/INFLADITO-QUESO-15GR.jpg',
+          'https://delcampoatucasaperu.com/wp-content/uploads/2020/12/infladito-queso-150g-600x600.png'
+        ]
+
+      },
+      {
+        id: 'snk-06',
+        name: 'Infladitos de Quinua Fuego Picante',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Snacks horneados intensos con toque picante de extra páprika y condimentos naturales.',
+        ingredients: 'Granos de quinua y arroz extruidos, queso cheddar en polvo, condimentos naturales, extra páprika.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 180g', price: 16.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2022/05/PRODUCTOS-1080X0180-30.jpg'
+      },
+      {
+        id: 'snk-07',
+        name: 'Rosquitas Integrales de Yogurt y Coco',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Rosquitas 100% artesanales con harina integral, yogurt y coco, endulzadas naturalmente con panela.',
+        ingredients: 'Harina integral, yogurt natural, coco rallado, panela orgánica.',
+        tags: ['Artesanal'],
+        variants: [
+          { label: 'Lonchera (3 und)', price: 3.00 },
+          { label: 'Caja (12 und)', price: 10.00 }
+        ],
+        images: [
+          'https://delcampoatucasaperu.com/wp-content/uploads/2023/06/4-1.jpg',
+          'https://delcampoatucasaperu.com/wp-content/uploads/2021/02/ROSQUITAS-X-12-2.jpg'
+        ]
+
+      },
+      {
+        id: 'snk-08',
+        name: 'Rosquitas Saladitas con Sal de Maras',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Rosquitas artesanales crocantes con sal rosada de Maras, ajonjolí tostado y salvado de trigo.',
+        ingredients: 'Harina integral, salvado de trigo, ajonjolí tostado, sal de Maras 100% natural.',
+        tags: ['Artesanal'],
+        variants: [{ label: 'Caja (12 und)', price: 10.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2026/05/ROSQUITAS-SALADITAS-12UND.jpg'
+      },
+      {
+        id: 'snk-09',
+        name: 'Llantitas Andinas',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Aros crocantes de quinua y arroz extruidos enriquecidos con maca, lúcuma y maíz morado.',
+        ingredients: 'Granos de quinua y arroz extruidos, maca, lúcuma y maíz morado.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 15g', price: 3.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2023/03/3-1.jpg'
+      },
+      {
+        id: 'snk-10',
+        name: 'Chocobolis Andinas',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Bolitas crocantes de quinua, kiwicha y cañihua bañadas en cacao al 70%, endulzadas con monkfruit.',
+        ingredients: 'Quinua, kiwicha, cañihua, cacao 70%, fruto del monje (monkfruit).',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 12g', price: 4.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2026/06/chocoboli-calor.jpg'
+      },
+      {
+        id: 'snk-11',
+        name: 'Globulitos Cereal Antianémico',
+        brand: 'Globulitos',
+        category: 'Snacks Saludables',
+        description: 'Cereal crocante sabor natural fortificado con hierro hemínico de alta absorción para combatir la anemia.',
+        ingredients: 'Quinua, arroz, hierro hemínico, ligeramente endulzado con panela.',
+        tags: ['Sin Gluten', 'Alto en Hierro'],
+        variants: [{ label: 'Bolsa 18g', price: 3.00 }],
+        image: 'https://www.gretamarket.com/cdn/shop/files/6193ECAF-3454-4E86-B2EB-C995095BF222.png?v=1720448165'
+      },
+      {
+        id: 'snk-12',
+        name: 'Chips de Maíz Mix de Ajíes',
+        brand: 'La Purita',
+        category: 'Snacks Saludables',
+        description: 'Crujientes chips de maíz sazonados con paprika y ají mirasol peruano.',
+        ingredients: 'Maíz, mix de ajíes (paprika y ají mirasol), sal marina, azúcar integral, cebolla y comino.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 200g', price: 14.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/chips-de-maiz-mix-de-ajies-200g-5360848.jpg?v=1789347732&width=1100'
+      },
+      {
+        id: 'snk-13',
+        name: 'Chips de Maíz Sal Marina',
+        brand: 'La Purita',
+        category: 'Snacks Saludables',
+        description: 'Chips de maíz extruido con un toque justo de sal marina y azúcar integral.',
+        ingredients: 'Maíz, sal marina y azúcar integral.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 200g', price: 14.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/chips-de-maiz-sal-marina-200g-9861969.jpg?v=1789347732&width=1800'
+      },
+      {
+        id: 'snk-14',
+        name: 'Tostaditas de Avena',
+        brand: 'La Purita',
+        category: 'Snacks Saludables',
+        description: 'Tostaditas ligeras y crocantes elaboradas únicamente con avena sin gluten y sal de Maras.',
+        ingredients: 'Avena y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 60g', price: 7.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/tostaditas-avena-original-60g-9895318.jpg?v=1789347616&width=1100'
+      },
+      {
+        id: 'snk-15',
+        name: 'Tostadas Multisemillas',
+        brand: 'Del Campo a tu Casa',
+        category: 'Snacks Saludables',
+        description: 'Tostadas 100% integrales con semillas seleccionadas, endulzadas con stevia, sin leche ni huevo.',
+        ingredients: 'Harina 100% integral, mix de semillas (girasol, ajonjolí, linaza), stevia natural.',
+        tags: ['Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Caja 22 und', price: 16.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2021/02/productos-web-25-1080x675.jpg'
+      },
+      {
+        id: 'snk-16',
+        name: 'Rosquitas de Avena y Cacao',
+        brand: 'La Purita',
+        category: 'Snacks Saludables',
+        description: 'Rosquitas crocantes de avena con cacao orgánico, semillas y un toque de canela.',
+        ingredients: 'Avena, panela orgánica, cacao en polvo orgánico, semillas de girasol, ajonjolí, arvejas, canela, sal de Maras, bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 80g', price: 5.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/rosquitas-de-avena-y-cacao-80g-7890154.jpg?v=1789347673&width=1800'
+      },
+      {
+        id: 'snk-17',
+        name: 'Rosquitas de Avena y Anís',
+        brand: 'La Purita',
+        category: 'Snacks Saludables',
+        description: 'Tradicionales rosquitas de avena aromatizadas con anís y semillas tostadas.',
+        ingredients: 'Avena, panela orgánica, ajonjolí, semillas de girasol, arvejas, anís, canela, sal de Maras, bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 80g', price: 5.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/rosquitas-de-avena-y-anis-80g-2258730.jpg?v=1789347673&width=1100'
+      },
+      {
+        id: 'snk-18',
+        name: 'Crisinos de Avena y Cacao',
+        brand: 'La Purita',
+        category: 'Snacks Saludables',
+        description: 'Palitos crocantes horneados de avena con cacao orgánico y semillas.',
+        ingredients: 'Avena, panela orgánica, cacao en polvo orgánico, semillas de girasol, ajonjolí, arvejas, canela, sal rosada, bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 80g', price: 5.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/crisinos-de-cacao-80g-8432308.jpg?v=1789347673&width=1100'
+      },
+      {
+        id: 'snk-19',
+        name: 'Crisinos de Avena y Ajonjolí',
+        brand: 'La Purita',
+        category: 'Snacks Saludables',
+        description: 'Palitos horneados de avena con abundante ajonjolí y semillas de girasol.',
+        ingredients: 'Avena, panela orgánica, ajonjolí, semillas de girasol, arvejas, canela, sal rosada, bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 80g', price: 5.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/crisinos-de-ajonjoli-80g-3395770.jpg?v=1789347676&width=1100'
+      },
+      {
+        id: 'snk-20',
+        name: 'Crisinos Finas Hierbas',
+        brand: 'La Purita',
+        category: 'Snacks Saludables',
+        description: 'Crisinos salados horneados con tomillo, orégano y sal de Maras.',
+        ingredients: 'Avena, arroz, panela orgánica, ajonjolí, semillas de girasol, sal de Maras, tomillo, orégano, bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 80g', price: 5.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/crisinos-de-finas-hierbas-80g-6636541.jpg?v=1794495258&width=1100'
+      },
+      {
+        id: 'snk-21',
+        name: 'Crisinos Mix de Ajíes',
+        brand: 'La Purita',
+        category: 'Snacks Saludables',
+        description: 'Crisinos crocantes con ají mirasol, ají páprika y especias naturales.',
+        ingredients: 'Avena, arroz, panela orgánica, ajonjolí, semillas de girasol, sal de Maras, arveja, ají mirasol, ajo en polvo, ají páprika, orégano, bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 80g', price: 5.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/crisinos-mix-de-ajies-80g-2578848.jpg?v=1794495258&width=1100'
+      },
+
+      // ==================== PACKS LONCHERA ====================
+      {
+        id: 'pck-01',
+        name: 'Pack Loncherita (5 Snacks)',
+        brand: 'Del Campo a tu Casa',
+        category: 'Packs Lonchera',
+        description: 'Combo ideal para la lonchera escolar con 5 snacks saludables variados y nutritivos.',
+        ingredients: 'Incluye: 1 Rosquita integral yogurt y coco (3 und), 1 Quinua Crunch frutos rojos (15g), 1 Quinua Crunch cacao (15g), 1 Llantita andina (15g), 1 Infladito cúrcuma (15g).',
+        tags: ['Sin Gluten', 'Lonchera'],
+        variants: [{ label: 'Pack 5 Snacks', price: 12.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2023/09/8-1.jpg'
+
+      },
+      {
+        id: 'pck-02',
+        name: 'Pack Chocobañados (4 Snacks)',
+        brand: 'Del Campo a tu Casa',
+        category: 'Packs Lonchera',
+        badge: 'A Pedido',
+        description: 'Selección de 4 snacks bañados en cacao 70% endulzados con monkfruit, libres de azúcar.',
+        ingredients: 'Incluye: Choco maní sin azúcar (20g), Choco pasas sin azúcar (20g), Choco arándanos sin azúcar (20g), Choco almendras sin azúcar (20g).',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Pack 4x20g (A Pedido)', price: 22.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2024/09/CHOCO-BANADOS_-2.jpg'
+      },
+
+      // ==================== GALLETAS LA PURITA ====================
+      {
+        id: 'gal-01',
+        name: 'Frasco Galletas Mix Cacao, Vainilla y Almendras',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Frasco de vidrio con surtido de galletas crocantes sin relleno de cacao, vainilla y almendras.',
+        ingredients: 'Galletas de avena sin gluten; cacao orgánico, vainilla natural y almendras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 130g (Sin relleno)', price: 24.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-mix-de-cacao-vainilla-y-almendras-130g-8082956.jpg?v=1789347672&width=1100'
+      },
+      {
+        id: 'gal-02',
+        name: 'Frasco Galletas Avena y Cacao',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas artesanales de avena con cacao orgánico en frasco reutilizable.',
+        ingredients: 'Avena, panela orgánica, linaza, semillas de girasol, cacao en polvo orgánico, arveja, canela, bicarbonato de sodio y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 130g (Sin relleno)', price: 24.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-130g-1018692.jpg?v=1789347670&width=1500'
+      },
+      {
+        id: 'gal-03',
+        name: 'Frasco Galletas Avena y Almendras',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas de avena con trozos de almendras tostadas y nuez moscada.',
+        ingredients: 'Avena, almendras, panela orgánica, linaza, semillas de girasol, arveja, canela, sal de Maras y nuez moscada.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 130g (Sin relleno)', price: 24.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-almendras-130g-3369375.jpg?v=1789347674&width=1100'
+      },
+      {
+        id: 'gal-04',
+        name: 'Frasco Galletas Avena y Vainilla',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas de avena aromatizadas con vainilla en vaina, esencia natural y naranja.',
+        ingredients: 'Avena, panela orgánica, semillas de girasol, naranja, vainilla en esencia y vaina, canela, bicarbonato de sodio, sal rosada.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 130g (Sin relleno)', price: 24.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-130g-2388897.jpg?v=1789347673&width=1100'
+      },
+      {
+        id: 'gal-05',
+        name: 'Frasco Galletas Avena y Vainilla Rellenas de Maca',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas sándwich de avena y vainilla con cremoso relleno energético de harina de maca.',
+        ingredients: 'Avena, almendras, panela orgánica, semillas de girasol, harina de maca, jugo de naranja, canela, sal de Maras, extracto de vainilla, bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 200g', price: 27.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-maca-200g-7036730.jpg?v=1789347609&width=1100'
+      },
+      {
+        id: 'gal-06',
+        name: 'Frasco Galletas Avena y Vainilla Rellenas de Vainilla',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Doble galleta de avena y vainilla con suave crema de vainilla natural.',
+        ingredients: 'Avena, almendras, panela orgánica, semillas de girasol, jugo de naranja, canela, sal de Maras, extracto de vainilla, bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 200g', price: 27.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-vainilla-200g-5704453.jpg?v=1789347609&width=1100'
+      },
+      {
+        id: 'gal-07',
+        name: 'Frasco Galletas Avena y Vainilla Rellenas de Lúcuma',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas sándwich de vainilla con relleno cremoso de lúcuma peruana.',
+        ingredients: 'Avena, almendras, panela orgánica, semillas de girasol, harina de lúcuma, jugo de naranja, canela, sal de Maras, extracto de vainilla y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 200g', price: 27.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-lucuma-200g-7086279.jpg?v=1789347609&width=1100'
+      },
+      {
+        id: 'gal-08',
+        name: 'Frasco Galletas Avena y Cacao Rellenas de Vainilla',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas de avena y cacao orgánico rellenas con crema de vainilla.',
+        ingredients: 'Avena, almendras, panela orgánica, semillas de girasol, cacao en polvo orgánico, arveja, canela, linaza, extracto de vainilla, bicarbonato de sodio, sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 200g', price: 27.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-rellenas-de-vainilla-200g-9001300.jpg?v=1789347609&width=1100'
+      },
+      {
+        id: 'gal-09',
+        name: 'Frasco Galletas Avena y Vainilla Rellenas de Maní',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas de avena y vainilla rellenas de crema pura de maní.',
+        ingredients: 'Avena, maní, panela orgánica, semillas de girasol, jugo de naranja, canela, sal de Maras, extracto de vainilla y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 200g', price: 24.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-mani-200g-4853294.jpg?v=1789347674&width=1100'
+      },
+      {
+        id: 'gal-10',
+        name: 'Frasco Galletas Avena, Cacao y Vainilla Rellenas de Maní',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Combinación de galleta de cacao y galleta de vainilla unidas por crema de maní.',
+        ingredients: 'Avena, maní, panela orgánica, semillas de girasol, cacao en polvo orgánico, linaza, jugo de naranja, canela, arveja, sal de Maras, bicarbonato de sodio, extracto de vainilla.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 200g', price: 24.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-cacao-y-vainilla-rellenas-de-mani-200g-4806068.jpg?v=1789347670&width=1100'
+      },
+      {
+        id: 'gal-11',
+        name: 'Frasco Galletas Avena y Cacao Rellenas de Maní',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas intensas de avena y cacao con relleno cremoso de maní.',
+        ingredients: 'Maní, avena, panela orgánica, cacao en polvo orgánico, semillas de girasol, linaza, arveja, canela, sal de Maras y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 200g', price: 24.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-rellenas-de-mani-200g-6206848.jpg?v=1789347674&width=1100'
+      },
+      {
+        id: 'gal-12',
+        name: 'Sandwich Avena y Vainilla Rellenas de Maní (Bolsa)',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Presentación en bolsas individuales de 35g listas para llevar.',
+        ingredients: 'Avena, maní, panela orgánica, semillas de girasol, jugo de naranja, canela, sal de Maras, extracto de vainilla y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 4.50 },
+          { label: 'Pack 6 bolsas (6x35g)', price: 25.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-mani-6-pack-9898718.jpg?v=1789347551&width=1500',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-mani-6-pack-7500273.png?v=1789347552&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-13',
+        name: 'Sandwich Avena y Cacao Rellenas de Maní (Bolsa)',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas sándwich de cacao y maní en presentación individual o pack de 6.',
+        ingredients: 'Maní, avena, panela orgánica, cacao en polvo orgánico, semillas de girasol, linaza, arveja, canela, sal de Maras y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 4.50 },
+          { label: 'Pack 6 bolsas (6x35g)', price: 25.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-rellenas-de-mani-6-pack-4164748.jpg?v=1789347550&width=1500',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-rellenas-de-mani-6-pack-5584862.png?v=1789347550&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-14',
+        name: 'Sandwich Avena, Cacao y Vainilla Rellenas de Maní (Bolsa)',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas bicolor chocovainilla rellenas con crema de maní.',
+        ingredients: 'Avena, maní, panela orgánica, semillas de girasol, cacao en polvo orgánico, linaza, arveja, canela, bicarbonato de sodio y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 4.50 },
+          { label: 'Pack 6 bolsas (6x35g)', price: 25.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-cacao-y-vainilla-rellenas-de-mani-6-pack-9096445.jpg?v=1789347551&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-cacao-y-vainilla-rellenas-de-mani-6-pack-6457910.png?v=1789347551&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-15',
+        name: 'Sandwich Vainilla Rellenas de Vainilla (Bolsa)',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas sándwich de vainilla con relleno de crema de vainilla.',
+        ingredients: 'Avena, panela orgánica, linaza, semillas de girasol, naranja, vainilla en vaina y en extracto, canela, bicarbonato de sodio y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 5.50 },
+          { label: 'Pack 6 bolsas (6x35g)', price: 31.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-vainilla-6-pack-9292146.jpg?v=1789347551&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-vainilla-6-pack-6534881.png?v=1789347551&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-16',
+        name: 'Sandwich Vainilla Rellenas de Maca (Bolsa)',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas sándwich de vainilla rellenas con crema de maca andina.',
+        ingredients: 'Avena, almendras, panela orgánica, semillas de girasol, harina de maca, jugo de naranja, canela, sal de Maras, extracto de vainilla y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 5.50 },
+          { label: 'Pack 6 bolsas (6x35g)', price: 31.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-maca-6-pack-5364030.jpg?v=1789347551&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-maca-6-pack-8721604.png?v=1789347551&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-17',
+        name: 'Sandwich Vainilla Rellenas de Lúcuma (Bolsa)',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas sándwich de vainilla rellenas con crema de lúcuma.',
+        ingredients: 'Avena, almendras, panela orgánica, semillas de girasol, harina de lúcuma, jugo de naranja, canela, sal de Maras, extracto de vainilla y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 5.50 },
+          { label: 'Pack 6 bolsas (6x35g)', price: 31.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-lucuma-6-pack-1352824.jpg?v=1789347549&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-lucuma-6-pack-3718239.png?v=1789347550&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-18',
+        name: 'Sandwich Chocolate Rellenas de Vainilla (Bolsa)',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletas sándwich de cacao rellenas con suave crema de vainilla.',
+        ingredients: 'Avena, almendras, panela orgánica, semillas de girasol, cacao en polvo orgánico, arveja, canela, linaza, extracto de vainilla, bicarbonato de sodio y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 5.50 },
+          { label: 'Pack 6 bolsas (6x35g)', price: 31.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-rellenas-de-vainilla-6-pack-1485205.jpg?v=1789347551&width=1500',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-rellenas-de-vainilla-6-pack-2199928.png?v=1789347551&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-19',
+        name: 'Galletones Mix Cacao, Vainilla y Almendras',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletones crocantes sin relleno surtidos de cacao, vainilla y almendras.',
+        ingredients: 'Mix de galletas de avena sin gluten: cacao, vainilla y almendras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 4.50 },
+          { label: 'Pack 6 uds (6x35g)', price: 25.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-mix-de-cacao-vainilla-y-almendras-6-pack-3246092.jpg?v=1789347550&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-mix-de-cacao-vainilla-y-almendras-6-pack-1856032.png?v=1789347550&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-20',
+        name: 'Galletones Avena y Vainilla',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletones sin relleno de avena y vainilla natural.',
+        ingredients: 'Avena, panela orgánica, semillas de girasol, naranja, vainilla en vaina y en extracto, canela, bicarbonato de sodio y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 4.50 },
+          { label: 'Pack 6 uds (6x35g)', price: 25.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-6-pack-3715108.jpg?v=1789347551&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-6-pack-6733998.png?v=1789347551&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-21',
+        name: 'Galletones Avena y Almendras',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletones crocantes de avena con almendras tostadas.',
+        ingredients: 'Avena, almendras, panela orgánica, linaza, semillas de girasol, arveja, canela, sal de Maras y nuez moscada.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 4.50 },
+          { label: 'Pack 6 uds (6x35g)', price: 25.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-almendras-6-pack-5232913.jpg?v=1789347552&width=1500',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-almendras-6-pack-4192735.png?v=1789347552&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-22',
+        name: 'Galletones Avena y Cacao',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Galletones crocantes de avena y cacao orgánico sin relleno.',
+        ingredients: 'Avena, panela orgánica, semillas de girasol, cacao en polvo orgánico, linaza, arveja, canela, bicarbonato de sodio y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 4.50 },
+          { label: 'Pack 6 uds (6x35g)', price: 25.50 }
+        ],
+       images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-6-pack-3811195.jpg?v=1789347551&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-6-pack-8009153.png?v=1789347552&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-23',
+        name: 'Caja Sandwich Avena y Cacao Rellenas de Maní',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Presentación en caja dispendadora con 6 paquetes de galletas sándwich de cacao y maní.',
+        ingredients: 'Maní, avena, panela orgánica, cacao en polvo orgánico, semillas de girasol, linaza, arveja, canela, sal de Maras y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 3.50 },
+          { label: 'Caja 6 uds (6x35g)', price: 19.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-rellenas-de-mani-6-pack-4164748.jpg?v=1789347550&width=1500',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-rellenas-de-mani-6-pack-5584862.png?v=1789347550&width=1100'
+        ]
+      },
+      {
+        id: 'gal-24',
+        name: 'Caja Sandwich Avena y Vainilla Rellenas de Maní',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Presentación en caja con 6 paquetes de galletas sándwich de vainilla y maní.',
+        ingredients: 'Avena, maní, panela orgánica, semillas de girasol, jugo de naranja, canela, sal de Maras, extracto de vainilla y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 3.50 },
+          { label: 'Caja 6 uds (6x35g)', price: 19.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-mani-6-pack-9898718.jpg?v=1789347551&width=1500',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-mani-6-pack-7500273.png?v=1789347552&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-25',
+        name: 'Caja Galletones Mix Sin Relleno',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Caja con 6 paquetes de galletones mixtos (cacao, vainilla y almendras) sin relleno.',
+        ingredients: 'Mix de galletas de avena: cacao, vainilla y almendras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 3.50 },
+          { label: 'Caja 6 uds (6x35g)', price: 19.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-mix-de-cacao-vainilla-y-almendras-6-pack-3246092.jpg?v=1789347550&width=1500',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-mix-de-cacao-vainilla-y-almendras-6-pack-1856032.png?v=1789347550&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-26',
+        name: 'Caja Sandwich Vainilla Rellenas de Lúcuma',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Caja con 6 paquetes de galletas sándwich de vainilla rellenas de lúcuma.',
+        ingredients: 'Avena, almendras, panela orgánica, semillas de girasol, harina de lúcuma, jugo de naranja, canela, sal de Maras, extracto de vainilla y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 4.00 },
+          { label: 'Caja 6 uds (6x35g)', price: 22.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-lucuma-6-pack-1352824.jpg?v=1789347549&width=1500',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-lucuma-6-pack-3718239.png?v=1789347550&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-27',
+        name: 'Caja Sandwich Chocolate Rellenas de Vainilla',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Caja con 6 paquetes de galletas sándwich de chocolate rellenas de vainilla.',
+        ingredients: 'Avena, almendras, panela orgánica, semillas de girasol, cacao en polvo orgánico, arveja, canela, linaza, extracto de vainilla, bicarbonato de sodio y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 4.00 },
+          { label: 'Caja 6 uds (6x35g)', price: 22.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-rellenas-de-vainilla-6-pack-1485205.jpg?v=1789347551&width=1500',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-cacao-rellenas-de-vainilla-6-pack-2199928.png?v=1789347551&width=1100'
+        ]
+
+      },
+      {
+        id: 'gal-28',
+        name: 'Caja Sandwich Vainilla Rellenas de Maca',
+        brand: 'La Purita',
+        category: 'Galletas La Purita',
+        description: 'Caja con 6 paquetes de galletas sándwich de vainilla rellenas de maca.',
+        ingredients: 'Avena, almendras, panela orgánica, semillas de girasol, harina de maca, jugo de naranja, canela, sal de Maras, extracto de vainilla y bicarbonato de sodio.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Unidad (35g)', price: 4.00 },
+          { label: 'Caja 6 uds (6x35g)', price: 22.50 }
+        ],
+images: [
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-maca-6-pack-5364030.jpg?v=1789347551&width=1500',
+          'https://www.lapurita.com/cdn/shop/files/galletas-de-avena-y-vainilla-rellenas-de-maca-6-pack-8721604.png?v=1789347551&width=1100'
+        ]
+      },
+
+      // ==================== CEREALES Y GRANOLA ====================
+      {
+        id: 'cer-01',
+        name: 'Globulitos Bolsa Cereal Fortificado con Hierro Hemínico',
+        brand: 'Globulitos',
+        category: 'Cereales y Granola',
+        description: 'Cereal nutritivo fortificado con hierro hemínico para la prevención de la anemia. No causa estreñimiento.',
+        ingredients: 'Quinua, arroz, hierro hemínico, sin preservantes ni colorantes artificiales.',
+        tags: ['Sin Gluten', 'Alto en Hierro'],
+        variants: [{ label: 'Bolsa Doypack 160g', price: 17.00 }],
+        image: 'https://www.gretamarket.com/cdn/shop/files/6193ECAF-3454-4E86-B2EB-C995095BF222.png?v=1720448165'
+      },
+      {
+        id: 'cer-02',
+        name: 'Globulitos Caja Cereal Alto en Hierro',
+        brand: 'Globulitos',
+        category: 'Cereales y Granola',
+        description: 'Aporta 12.5 mg de hierro por porción. Cereal crocante de quinua y arroz con hierro hemo.',
+        ingredients: 'Cereal de quinua y arroz con hierro hemo, sabor natural.',
+        tags: ['Sin Gluten', 'Alto en Hierro'],
+        variants: [{ label: 'Caja 220g', price: 21.50 }],
+        image: 'https://plazavea.vteximg.com.br/arquivos/ids/30617599-450-450/image-70dae08384794d8aa9504ed0834e3b9c.jpg?v=638754973725200000'
+      },
+      {
+        id: 'cer-03',
+        name: 'Quinua Crunch Caja Cacao',
+        brand: 'Del Campo a tu Casa',
+        category: 'Cereales y Granola',
+        description: 'Mezcla familiar de bolitas de quinua natural y quinua con cacao sin azúcar.',
+        ingredients: 'Bolitas de quinua natural, quinua con cacao orgánico, sin preservantes ni colorantes.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Caja 180g', price: 19.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2025/05/QUINUA-CRUNCH-CACAO-180GR.jpg'
+      },
+      {
+        id: 'cer-04',
+        name: 'Quinua Crunch Caja Frutos Rojos',
+        brand: 'Del Campo a tu Casa',
+        category: 'Cereales y Granola',
+        description: 'Mix familiar de bolitas de quinua con arándanos y frutos rojos sin azúcar añadida.',
+        ingredients: 'Bolitas de quinua natural, quinua con arándanos, sin preservantes ni colorantes.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Caja 180g', price: 19.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2025/05/QUINUA-CRUNCH-FR-180GR.jpg'
+      },
+      {
+        id: 'cer-05',
+        name: 'Llantitas Andinas Caja',
+        brand: 'Del Campo a tu Casa',
+        category: 'Cereales y Granola',
+        description: 'Cereal de quinua en aritos con lúcuma, maíz morado y maca. Apto desde +09 meses.',
+        ingredients: 'Quinua y arroz extruidos, maca, lúcuma y maíz morado.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Caja 180g (+09m)', price: 22.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2023/03/LLANTITA-ANDINA-180G-1-600x600.jpg'
+      },
+      {
+        id: 'cer-06',
+        name: 'Chocobolis Andinas Caja',
+        brand: 'Del Campo a tu Casa',
+        category: 'Cereales y Granola',
+        description: 'Bolitas crocantes de quinua, kiwicha y cañihua bañadas en cacao 70% endulzadas con monkfruit (+12 meses).',
+        ingredients: 'Quinua, kiwicha, cañihua, cacao 70%, monkfruit.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Caja 220g (+12m)', price: 39.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2023/03/chocobolis-calor.jpg'
+      },
+      {
+        id: 'cer-07',
+        name: 'Pops Tres Maíces Caja',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Aritos expandidos de maíz amarillo, morado y blanco endulzados con panela orgánica.',
+        ingredients: 'Maíz amarillo, maíz morado, maíz blanco, panela orgánica y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Caja 200g', price: 19.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/cereal-pops-3-maices-200g-9675467.jpg?v=1789347733&width=1800'
+      },
+      {
+        id: 'cer-08',
+        name: 'Pops Cacao',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Cereal expandido crocante de arveja, maíz y quinua con cacao orgánico.',
+        ingredients: 'Arveja, maíz, panela orgánica, cacao en polvo orgánico, quinua y sal de Maras/rosada.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Caja 200g', price: 19.50 },
+          { label: 'Pote Familiar 350g', price: 27.50 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/cereal-pops-cacao-200g-6017267.jpg?v=1789347730&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/cereal-pops-cacao-320g-2096455.jpg?v=1789347608&width=1500'
+        ]
+
+      },
+      {
+        id: 'cer-09',
+        name: 'Pops Canela Caja',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Cereal crocante a base de plantas con aroma natural de canela y quinua.',
+        ingredients: 'Arveja, maíz, panela orgánica, canela, quinua y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Caja 200g', price: 19.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/cereal-pops-canela-200g-vcto-20102026-5682637.jpg?v=1789347731&width=1800'
+      },
+      {
+        id: 'cer-10',
+        name: 'Pops Maíz Morado Caja',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Aritos expandidos ricos en antocianinas de maíz morado peruano.',
+        ingredients: 'Maíz morado, panela orgánica y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Caja 200g', price: 19.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/cereal-pops-maiz-morado-200g-3014614.jpg?v=1789347733&width=1100'
+      },
+      {
+        id: 'cer-11',
+        name: 'Pops Caramel Caja',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Bolitas crocantes de quinua y arvejas glaseadas con panela orgánica.',
+        ingredients: 'Arvejas, maíz, panela orgánica, quinua y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Caja 200g', price: 19.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/cereal-pops-caramel-200g-3147138.jpg?v=1789347730&width=1100'
+      },
+      {
+        id: 'cer-12',
+        name: 'Pops Sin Azúcar Añadida Caja',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Cereal expandido sin azúcar añadida, aromatizado suavemente con canela.',
+        ingredients: 'Arveja, maíz, canela, quinua y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Caja 200g', price: 19.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/cereal-pops-sin-azucar-200g-9716793.jpg?v=1789347731&width=1800'
+      },
+      {
+        id: 'cer-13',
+        name: 'Pops Avena Caramel Pote',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Aritos crocantes de avena, garbanzo y harina de camote endulzados con panela.',
+        ingredients: 'Avena, garbanzo, maíz, harina de camote, panela orgánica, canela, sal rosada.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Pote 350g', price: 27.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/cereal-pops-avena-caramel-350g-6440208.jpg?v=1789347609&width=1100'
+      },
+      {
+        id: 'cer-14',
+        name: 'Pops Avena Pote',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Aritos de avena sin gluten con garbanzo y harina de camote en pote reutilizable.',
+        ingredients: 'Avena, garbanzo, maíz, harina de camote, panela orgánica, canela, sal rosada.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Pote 350g', price: 27.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/cereal-pops-avena-350g-6675924.jpg?v=1789347609&width=1100'
+
+      },
+      {
+        id: 'cer-15',
+        name: 'Quinoa Pops Cacao',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Quinua expandida crocante con cacao y azúcar rubia.',
+        ingredients: 'Quinua, azúcar rubia, cacao.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 200g', price: 21.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/quinua-pop-cacao-200g-6193356.jpg?v=1789347487&width=1100'
+      },
+      {
+        id: 'cer-16',
+        name: 'Quinoa Pops Cinnamon',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Quinua pop con canela en polvo y un toque dulce.',
+        ingredients: 'Quinua, azúcar rubia y canela en polvo.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 200g', price: 21.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/quinua-pop-canela-200g-1554458.jpg?v=1789347487&width=1100'
+      },
+      {
+        id: 'cer-17',
+        name: 'Quinoa Pops Caramel',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Granos de quinua expandida ligeramente acaramelados con azúcar rubia.',
+        ingredients: 'Quinua, azúcar rubia.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 200g', price: 21.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/quinua-pop-caramel-200g-5717676.jpg?v=1789347488&width=1100'
+      },
+      {
+        id: 'cer-18',
+        name: 'Quinua Pop Original',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Cereal expandido de quinua 100% natural, sin azúcar añadida.',
+        ingredients: 'Cereal expandido de quinua 100% natural.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 200g', price: 17.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/quinua-pop-200g-3005994.jpg?v=1789606506&width=1100'
+      },
+      {
+        id: 'cer-19',
+        name: 'Granola Casera Horneada',
+        brand: 'Del Campo a tu Casa',
+        category: 'Cereales y Granola',
+        description: 'Granola artesanal horneada con almendras activadas, coco, arándanos y panela.',
+        ingredients: 'Salvado de trigo, avena integral, coco, ajonjolí, almendras activadas, arándanos, pasas, trigo pop y panela.',
+        tags: ['Vegano'],
+        variants: [{ label: 'Bolsa 400g', price: 25.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2025/03/GRANOLA-CASERA-400GR.jpg'
+      },
+      {
+        id: 'cer-20',
+        name: 'Müesli Almendras y Cranberries',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Mix de avena instantánea sin gluten con almendras laminadas, cranberries y chía.',
+        ingredients: 'Avena, almendras, cranberries y semillas de chía.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 250g', price: 17.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/avena-mix-almendras-y-cranberries-250g-7240705.jpg?v=1789347501&width=1100'
+      },
+      {
+        id: 'cer-21',
+        name: 'Müesli Quinua y Choco Chips',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Mix de avena con quinua pop, choco chips, damasco, semillas de calabaza y coco.',
+        ingredients: 'Avena, quinua pop, choco chips, damasco, semillas de calabaza y coco deshidratado.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 250g', price: 17.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/avena-mix-quinua-y-choco-chips-250g-2168543.jpg?v=1789347490&width=1800'
+      },
+      {
+        id: 'cer-22',
+        name: 'Müesli Tutti i Frutti',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Desayuno completo de avena con frutas deshidratadas, almendras y semillas de calabaza.',
+        ingredients: 'Avena, almendras, manzana deshidratada, semillas de calabaza, cranberries, damasco, higo, coco deshidratado y pasas.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 250g', price: 17.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/avena-mix-tutti-i-frutti-250g-1664901.jpg?v=1789347491&width=1100'
+      },
+      {
+        id: 'cer-23',
+        name: 'Granola Sin Azúcar',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Granola crocante libre de azúcar con semillas, quinua pop y canela.',
+        ingredients: 'Avena en hojuelas, linaza, ajonjolí, semillas de girasol, quinua pop y canela.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Bolsa 250g', price: 17.00 },
+          { label: 'Bolsa 600g', price: 35.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/granola-sin-azucar-250g-9855756.jpg?v=1789347555&width=1000',
+          'https://www.lapurita.com/cdn/shop/files/granola-sin-azucar-600g-7367950.jpg?v=1789347669&width=1000'
+        ]
+
+      },
+      {
+        id: 'cer-24',
+        name: 'Granola de Cacao',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Granola horneada con cacao orgánico, quinua orgánica y semillas.',
+        ingredients: 'Avena en hojuelas, cacao en polvo orgánico, panela orgánica, quinua orgánica, ajonjolí, linaza, girasol.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Bolsa 250g', price: 17.00 },
+          { label: 'Bolsa 600g', price: 35.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/granola-de-cacao-250g-1233331.jpg?v=1789347555&width=1000',
+          'https://www.lapurita.com/cdn/shop/files/granola-de-cacao-600g-4792711.jpg?v=1789347668&width=1000'
+        ]
+
+      },
+      {
+        id: 'cer-25',
+        name: 'Granola de Caramel',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Granola dorada endulzada con panela orgánica y quinua orgánica.',
+        ingredients: 'Avena en hojuelas, panela orgánica, quinua orgánica, ajonjolí, linaza, girasol.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Bolsa 250g', price: 17.00 },
+          { label: 'Bolsa 600g', price: 35.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/granola-de-caramel-250g-1829200.jpg?v=1789347554&width=1000',
+          'https://www.lapurita.com/cdn/shop/files/granola-de-caramel-600g-5736261.jpg?v=1789347671&width=400'
+        ]
+
+      },
+      {
+        id: 'cer-26',
+        name: 'Granola de Canela',
+        brand: 'La Purita',
+        category: 'Cereales y Granola',
+        description: 'Granola aromática con canela, quinua orgánica y semillas nutritivas.',
+        ingredients: 'Avena en hojuelas, panela orgánica, quinua orgánica, ajonjolí, linaza, girasol, canela.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Bolsa 250g', price: 17.00 },
+          { label: 'Bolsa 600g', price: 35.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/granola-de-canela-250g-3027551.jpg?v=1789347553&width=1000',
+          'https://www.lapurita.com/cdn/shop/files/granola-de-canela-600g-7220060.jpg?v=1789347670&width=1000'
+        ]
+
+      },
+
+      // ==================== CHOCOLATES Y CHOCOBAÑADOS ====================
+      {
+        id: 'cho-01',
+        name: 'Choco Maní Doypack',
+        brand: 'Del Campo a tu Casa',
+        category: 'Chocolates y Chocobañados',
+        description: 'Maní tostado crocante cubierto con chocolate 70% cacao orgánico endulzado con monkfruit.',
+        ingredients: 'Maní tostado, cacao orgánico 70%, fruto del monje (monkfruit). Sin azúcar añadida.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Doypack 60g', price: 14.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2024/01/productos-web-40.jpg'
+      },
+      {
+        id: 'cho-02',
+        name: 'Choco Pasas Doypack',
+        brand: 'Del Campo a tu Casa',
+        category: 'Chocolates y Chocobañados',
+        description: 'Pasas seleccionadas bañadas en chocolate 70% cacao orgánico sin azúcar.',
+        ingredients: 'Pasas, chocolate 70% cacao orgánico, endulzado con monkfruit.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Doypack 60g', price: 14.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2024/01/productos-web-39.jpg'
+      },
+      {
+        id: 'cho-03',
+        name: 'Choco Almendras Doypack',
+        brand: 'Del Campo a tu Casa',
+        category: 'Chocolates y Chocobañados',
+        description: 'Almendras tostadas cubiertas con chocolate 70% cacao real endulzado con monkfruit.',
+        ingredients: 'Almendras tostadas, chocolate 70% cacao real, monkfruit.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Doypack 60g', price: 16.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2024/01/productos-web-42.jpg'
+      },
+      {
+        id: 'cho-04',
+        name: 'Choco Arándanos Doypack',
+        brand: 'Del Campo a tu Casa',
+        category: 'Chocolates y Chocobañados',
+        description: 'Arándanos deshidratados cubiertos con chocolate 70% cacao real sin azúcar.',
+        ingredients: 'Arándanos deshidratados, chocolate 70% cacao real, monkfruit.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Doypack 60g', price: 16.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2024/01/productos-web-41.jpg'
+      },
+      {
+        id: 'cho-05',
+        name: 'Gotitas de Chocolate 70% Cacao',
+        brand: 'Del Campo a tu Casa',
+        category: 'Chocolates y Chocobañados',
+        description: 'Chispas de chocolate oscuro orgánico al 70% endulzadas con monkfruit. Aptas dieta Keto.',
+        ingredients: 'Pasta de cacao orgánico 70%, manteca de cacao, monkfruit.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 160g (Keto)', price: 32.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2024/01/productos-web-41.jpg'
+      },
+      {
+        id: 'cho-06',
+        name: 'Chocolate de Taza 100% Cacao',
+        brand: 'Del Campo a tu Casa',
+        category: 'Chocolates y Chocobañados',
+        description: 'Monedas de chocolate de taza 100% cacao nativo orgánico que se derriten fácilmente.',
+        ingredients: '100% pasta de cacao nativo orgánico puro.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 100g', price: 16.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2026/06/chocolate-de-taza-en-mone.jpg'
+      },
+      {
+        id: 'cho-07',
+        name: 'Chocolate Orgánico 70% Tableta/Bloque',
+        brand: 'La Purita',
+        category: 'Chocolates y Chocobañados',
+        description: 'Chocolate puro al 70% elaborado con cacao orgánico y panela orgánica.',
+        ingredients: 'Cacao orgánico, panela orgánica, manteca de cacao orgánico.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bloque 200g', price: 44.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2026/06/chocolate-de-taza-en-mone.jpg'
+      },
+      {
+        id: 'cho-08',
+        name: 'Chocolate Relleno de Mantequilla de Maní',
+        brand: 'La Purita',
+        category: 'Chocolates y Chocobañados',
+        description: 'Bolsa con 30 bombones individuales de chocolate 70% rellenos de mantequilla de maní.',
+        ingredients: 'Cobertura orgánica de chocolate 70% (pasta de cacao orgánico, manteca de cacao orgánico y panela orgánica), maní, panela orgánica y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 30 und x 14g', price: 106.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/chocolates-con-mani-30-pack-2407995.jpg?v=1789347732&width=1000'
+      },
+      {
+        id: 'cho-09',
+        name: 'Chocolate Relleno de Frutos Secos',
+        brand: 'La Purita',
+        category: 'Chocolates y Chocobañados',
+        description: 'Bolsa con 30 bombones rellenos de frutos secos, guindones, higos y quinua pop.',
+        ingredients: 'Pasas, almendras, guindones, quinua pop, higos, pasta de cacao, cobertura orgánica 70%.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 30 und x 22g', price: 153.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/chocolates-con-frutos-secos-5-pack-4517053.jpg?v=1789347731&width=1600'
+      },
+      {
+        id: 'cho-10',
+        name: 'Chocolate Relleno con Vainilla',
+        brand: 'La Purita',
+        category: 'Chocolates y Chocobañados',
+        description: 'Bolsa con 30 bombones de chocolate orgánico 70% con suave crema de vainilla y almendras.',
+        ingredients: 'Chocolate orgánico al 70%, extracto de vainilla natural, almendras y un toque de sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 30 und x 14g', price: 122.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/chocolates-con-vainilla-6-pack-6444148.jpg?v=1789347493&width=1000'
+      },
+      {
+        id: 'cho-11',
+        name: 'Chocolate Relleno con Lúcuma',
+        brand: 'La Purita',
+        category: 'Chocolates y Chocobañados',
+        description: 'Bolsa con 30 bombones de chocolate orgánico 70% rellenos de crema de lúcuma.',
+        ingredients: 'Chocolate orgánico al 70%, panela orgánica, almendras, harina de lúcuma y un toque de sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 30 und x 14g', price: 123.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/chocolates-con-lucuma-6-pack-3944206.jpg?v=1789347491&width=1000'
+      },
+
+      // ==================== MANTEQUILLAS Y UNTABLES ====================
+      {
+        id: 'unt-01',
+        name: 'Globulitos Untable Alto en Hierro',
+        brand: 'Globulitos',
+        category: 'Mantequillas y Untables',
+        description: 'Crema untable fortificada con 14mg de hierro hemínico por porción, cacao y maní.',
+        ingredients: 'Pasta de maní con leche, pasta de cacao y hemoglobina (hierro hemo).',
+        tags: ['Sin Gluten', 'Alto en Hierro'],
+        variants: [{ label: 'Frasco 200g', price: 26.00 }],
+        image: '"C:\Users\fparray\OneDrive - San Fernando S.A\Negocio\WhatsApp Image 2026-11-15 at 9.14.02 PM.jpeg"'
+      },
+      {
+        id: 'unt-02',
+        name: 'Sachets Mantequilla 100% Almendras',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Prácticos sachets individuales de 32g con 6g de proteína natural.',
+        ingredients: '100% almendras tostadas molidas.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Sachet Unidad (32g)', price: 6.00 },
+          { label: 'Caja 8 sachets (8x32g)', price: 47.00 }
+        ],
+        image: 'https://www.lapurita.com/cdn/shop/files/crema-de-almendras-8-sachet-pack-256g-3578646.jpg?v=1789347492&width=1000'
+      },
+      {
+        id: 'unt-03',
+        name: 'Sachets Mantequilla 100% Maní',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Sachets portátiles de mantequilla 100% maní con 9g de proteína por sachet.',
+        ingredients: '100% maní tostado.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Sachet Unidad (32g)', price: 4.50 },
+          { label: 'Caja 6 sachets (6x32g)', price: 25.00 }
+        ],
+        image: 'https://www.lapurita.com/cdn/shop/files/mantequilla-100-mani-6-sachet-pack-192g-7689382.jpg?v=1789347490&width=1100'
+      },
+      {
+        id: 'unt-04',
+        name: 'Sachets Mantequilla de Maní y Cacao',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Sachets individuales de crema de maní con cacao y panela (7g proteína).',
+        ingredients: 'Maní, panela, cacao, sal rosada.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Sachet Unidad (32g)', price: 4.00 },
+          { label: 'Caja 8 sachets (8x32g)', price: 30.00 }
+        ],
+        image: 'https://www.lapurita.com/cdn/shop/files/mantequilla-de-mani-y-cacao-8-sachet-pack-256g-9995540.jpg?v=1789347490&width=1000'
+      },
+      {
+        id: 'unt-05',
+        name: 'Mantequilla 100% Maní Frasco',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Crema pura de maní tostado sin azúcar, sin aceites añadidos ni preservantes.',
+        ingredients: '100% crema de maní.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Frasco 170g', price: 14.00 },
+          { label: 'Frasco 410g', price: 31.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/mantequilla-100-mani-170-g-8271805.jpg?v=1789347612&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/mantequilla-100-mani-410g-4211560.jpg?v=1789347612&width=1500'
+        ]
+
+      },
+      {
+        id: 'unt-06',
+        name: 'Mantequilla de Maní y Panela Frasco',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Mantequilla de maní artesanal con un toque dulce de panela orgánica y sal de Maras.',
+        ingredients: 'Maní, panela orgánica y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Frasco 170g', price: 14.00 },
+          { label: 'Frasco 410g', price: 31.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/mantequilla-de-mani-y-panela-170g-9445884.jpg?v=1789347611&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/mantequilla-de-mani-y-panela-410g-5531707.jpg?v=1789347669&width=1500'
+        ]
+      },
+      {
+        id: 'unt-07',
+        name: 'Mantequilla "Crema" 100% Almendras Frasco',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Crema sedosa elaborada exclusivamente con almendras seleccionadas.',
+        ingredients: '100% almendras.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Frasco 170g', price: 28.00 },
+          { label: 'Frasco 410g', price: 60.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/crema-de-almendras-170g-4352099.jpg?v=1789347611&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/crema-de-almendras-410g-1234936.jpg?v=1789347668&width=1100'
+        ]
+      },
+      {
+        id: 'unt-08',
+        name: 'Mantequilla 100% Cashews Frasco',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Crema suave y naturalmente dulce de nueces de cajú (cashews) 100% puras.',
+        ingredients: '100% cashews (nueces de cajú).',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Frasco 170g', price: 32.00 },
+          { label: 'Frasco 410g', price: 70.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/mantequilla-100-cashews-170-g-5413415.jpg?v=1789347610&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/mantequilla-100-cashews-410g-6967416.jpg?v=1789347669&width=1100'
+        ]
+
+      },
+      {
+        id: 'unt-09',
+        name: 'Pasta de Ajonjolí Tahini Frasco',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Tahini puro de ajonjolí molido, ideal para hummus, aderezos y tostadas.',
+        ingredients: '100% ajonjolí.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Frasco 170g', price: 17.00 },
+          { label: 'Frasco 410g', price: 40.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/tahini-pasta-de-ajonjoli-170g-5081473.jpg?v=1789347611&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/tahini-pasta-de-ajonjoli-410g-3237550.jpg?v=1789347672&width=1100'
+        ]
+
+      },
+      {
+        id: 'unt-10',
+        name: 'Mantequilla de Maní y Cacao Frasco',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Deliciosa crema untable de maní tostado con cacao en polvo orgánico.',
+        ingredients: 'Maní, panela orgánica, cacao en polvo orgánico y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Frasco 170g', price: 16.00 },
+          { label: 'Frasco 410g', price: 33.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/mantequilla-de-mani-y-cacao-170-g-4539012.jpg?v=1789347612&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/mantequilla-de-mani-y-cacao-410g-7690473.jpg?v=1789347668&width=1100'
+        ]
+      },
+      {
+        id: 'unt-11',
+        name: 'Crema de Avellanas y Cacao Frasco',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Alternativa saludable y natural tipo nutella con avellanas, almendras, cashews y cacao orgánico.',
+        ingredients: 'Avellanas, almendras, cashews, panela orgánica, cacao orgánico y sal de Maras.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [
+          { label: 'Frasco 170g', price: 28.00 },
+          { label: 'Frasco 410g', price: 60.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/crema-de-avellanas-y-cacao-170g-8340324.jpg?v=1789347610&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/crema-de-avellanas-y-cacao-410g-6344528.jpg?v=1789347614&width=1100'
+        ]
+      },
+      {
+        id: 'unt-12',
+        name: 'Mantequilla de Almendras y Cacao Frasco',
+        brand: 'La Purita',
+        category: 'Mantequillas y Untables',
+        description: 'Crema gourmet de almendras tostadas con cacao en polvo y panela.',
+        ingredients: 'Almendras, panela y cacao en polvo.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 170g', price: 28.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/mantequilla-de-almendras-y-cacao-170g-3055613.png?v=1789347489&width=1100'
+      },
+
+      // ==================== ALACENA Y SUPERFOODS ====================
+      {
+        id: 'ala-01',
+        name: 'Cúrcuma Activada con Pimienta',
+        brand: 'Del Campo a tu Casa',
+        category: 'Alacena y Superfoods',
+        badge: 'A Pedido',
+        description: 'Cúrcuma 100% natural activada con pimienta negra para potenciar su absorción y efecto antiinflamatorio.',
+        ingredients: 'Cúrcuma pura 100% natural y pimienta negra molida. Sin sal ni aditivos.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Frasco/Bolsa 200g', price: 16.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2023/08/productos-web-8.png'
+      },
+      {
+        id: 'ala-02',
+        name: 'Vinagre de Sidra de Manzana con Madre',
+        brand: 'Del Campo a tu Casa',
+        category: 'Alacena y Superfoods',
+        description: 'Con "madre" natural (probióticos vivos). Sin filtrar y sin pasteurizar; apoya la digestión y el sistema inmune.',
+        ingredients: '100% sidra de manzana fermentada naturalmente con madre.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Botella 500ml', price: 30.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2020/12/PRODUCTOS-1080X0180-38.jpg'
+      },
+      {
+        id: 'ala-03',
+        name: 'Stevia y Yacón Andina en Sobres',
+        brand: 'Del Campo a tu Casa',
+        category: 'Alacena y Superfoods',
+        description: 'Endulzante 100% natural sin calorías ni sabor amargo. Libre de sucralosa, eritritol o maltodextrina. Apto diabéticos.',
+        ingredients: 'Extracto natural de hojas de stevia y raíz de yacón andino.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Caja 50 sobres (0.3g c/u)', price: 30.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2026/03/STEVIA-ANDINA-50-SOBRES-2.jpg'
+      },
+      {
+        id: 'ala-04',
+        name: 'Stevia y Yacón Andina Pote',
+        brand: 'Del Campo a tu Casa',
+        category: 'Alacena y Superfoods',
+        description: 'Presentación en pote rendidor de stevia pura con yacón andino, 100% libre de químicos.',
+        ingredients: 'Stevia natural y yacón andino puro.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Pote 50g', price: 59.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2026/03/STEVIA-ANDINA_-FRASCO.jpg'
+      },
+      {
+        id: 'ala-05',
+        name: 'Globulitos Cacao en Polvo Alto en Hierro',
+        brand: 'Globulitos',
+        category: 'Alacena y Superfoods',
+        description: 'Polvo de cacao fortificado con hierro hemo de máxima absorción (4.5mg hierro por porción). Alto en proteínas.',
+        ingredients: 'Cacao en polvo, hierro hemínico fortificado.',
+        tags: ['Sin Gluten', 'Alto en Hierro'],
+        variants: [{ label: 'Bolsa Doypack 95g', price: 36.00 }],
+        image: 'https://www.gretamarket.com/cdn/shop/files/A41FF380-38E7-44F5-B22B-A9297B3DA99F.png?v=1720449008&width=720'
+      },
+      {
+        id: 'ala-06',
+        name: 'Globulitos Complemento Nutricional Hierro Hemínico',
+        brand: 'Globulitos',
+        category: 'Alacena y Superfoods',
+        description: 'Fuente de hierro hemo en su mayor concentración (2.8 mg/g). Espolvorea 1/3 de cucharadita en comidas o jugos.',
+        ingredients: 'Hierro hemínico puro concentrado. Libre de azúcares y sodio.',
+        tags: ['Sin Gluten', 'Sin Azúcar', 'Alto en Hierro'],
+        variants: [{ label: 'Frasco 30g', price: 22.50 }],
+        image: 'https://nutripopperu.com/wp-content/uploads/2026/03/GLOBULITOS-HIERRO-HEMINICO.png'
+      },
+      {
+        id: 'ala-07',
+        name: 'Avena 100% Integral Grano Entero',
+        brand: 'Del Campo a tu Casa',
+        category: 'Alacena y Superfoods',
+        description: 'Grano entero de avena laminado de forma artesanal. Alta fuente de fibra natural.',
+        ingredients: '100% granos de avena integral laminados.',
+        tags: ['Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 1kg', price: 15.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2024/08/AVENA-100-INTEGRAL.jpg'
+      },
+      {
+        id: 'ala-08',
+        name: 'Avena Sin Gluten en Hojuelas',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Avena certificada libre de gluten en hojuelas enteras.',
+        ingredients: '100% avena pura sin gluten.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Bolsa 800g', price: 22.00 },
+          { label: 'Pote 1.5kg', price: 33.00 }
+        ],
+        images: [
+          'https://www.lapurita.com/cdn/shop/files/avena-en-hojuelas-sin-gluten-800g-7571720.jpg?v=1789347669&width=1100',
+          'https://www.lapurita.com/cdn/shop/files/avena-en-hojuelas-sin-gluten-15kg-7387636.jpg?v=1789347612&width=1100'
+        ]
+      },
+      {
+        id: 'ala-09',
+        name: '7 Semillas Instantánea',
+        brand: 'Del Campo a tu Casa',
+        category: 'Alacena y Superfoods',
+        description: 'Mezcla instantánea de 7 harinas andinas altamente nutritivas y fuente de proteína vegetal.',
+        ingredients: 'Quinua, kiwicha, cañihua, linaza, maíz blanco, maca y habas.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 400g', price: 16.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2020/12/H7-SEMILLAS.jpg'
+      },
+      {
+        id: 'ala-10',
+        name: 'Chía Ecológica',
+        brand: 'Del Campo a tu Casa',
+        category: 'Alacena y Superfoods',
+        description: 'Semillas de chía cosechadas sin pesticidas. Fuente natural de Omega 3, fibra y antioxidantes.',
+        ingredients: '100% semillas de chía ecológica.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 400g', price: 25.00 }]
+      },
+      {
+        id: 'ala-11',
+        name: 'Cacao Instantáneo 100% Puro',
+        brand: 'Del Campo a tu Casa',
+        category: 'Alacena y Superfoods',
+        description: 'Cacao en polvo 100% puro sin azúcar ni químicos, ideal para batidos, leches y repostería.',
+        ingredients: '100% semillas de cacao molidas y tamizadas.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 200g', price: 22.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2020/12/CACAO-5-600x600.jpg'
+      },
+      {
+        id: 'ala-12',
+        name: 'Cacao en Polvo La Purita',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Cacao puro en polvo para bebidas calientes y repostería saludable.',
+        ingredients: '100% cacao en polvo.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 200g', price: 22.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/cacao-en-polvo-200g-2626383.jpg?v=1789347548&width=1100'
+      },
+      {
+        id: 'ala-13',
+        name: 'Café Ecológico de Especialidad Villa Rica',
+        brand: 'Del Campo a tu Casa',
+        category: 'Alacena y Superfoods',
+        description: 'Granos orgánicos Arábica de Villa Rica recién tostados y molidos, con notas de naranja, panela, cacao y nueces.',
+        ingredients: '100% café orgánico Arábica de especialidad molido.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 250g', price: 30.00 }],
+        image: 'https://delcampoatucasaperu.com/wp-content/uploads/2020/12/CAFE-ECOLOGICO-250GR-S22.png'
+      },
+      {
+        id: 'ala-14',
+        name: 'Panela Orgánica Granulada',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Endulzante natural sin refinar obtenido de la evaporación del jugo de caña orgánica.',
+        ingredients: '100% jugo de caña evaporada orgánica.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Bolsa 1kg', price: 17.00 }]
+      },
+      {
+        id: 'ala-15',
+        name: 'Harina de Almendras',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Harina fina 100% de almendras para repostería saludable y keto.',
+        ingredients: '100% harina de almendras.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 200g', price: 24.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/harina-de-almendras-200g-3204459.jpg?v=1789347671&width=1100'
+      },
+      {
+        id: 'ala-16',
+        name: 'Almendras Laminadas',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Almendras naturales cortadas en finas láminas.',
+        ingredients: '100% almendras laminadas naturales.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 200g', price: 24.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/almendras-laminadas-200g-8439372.png?v=1789347669&width=1000'
+      },
+      {
+        id: 'ala-17',
+        name: 'Almendras Horneadas',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Almendras enteras horneadas crocantes listas para snack.',
+        ingredients: '100% almendras horneadas.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 100g', price: 11.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/almendras-horneadas-100g-2739260.png?v=1789347611&width=1000'
+      },
+      {
+        id: 'ala-18',
+        name: 'Ajonjolí Integral Tostado',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Semillas de ajonjolí integral ligeramente tostadas, fuente de calcio.',
+        ingredients: '100% ajonjolí integral tostado.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 250g', price: 13.50 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/ajonjoli-integral-250g-1436621.png?v=1789347672&width=1000'
+      },
+      {
+        id: 'ala-19',
+        name: 'Maní Tostado',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Maní seleccionado tostado natural sin sal añadida.',
+        ingredients: '100% maní tostado.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 800g', price: 27.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/mani-tostado-800g-5281462.png?v=1789347672&width=1000'
+      },
+      {
+        id: 'ala-20',
+        name: 'Extracto de Vainilla 100% Puro',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Extracto natural de vainilla pura en frasco gotero.',
+        ingredients: 'Vainilla 100% pura.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Gotero 30ml', price: 33.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/extracto-de-vainilla-30ml-6430079.jpg?v=1789347610&width=1100'
+      },
+      {
+        id: 'ala-21',
+        name: 'Nueces de Cajú',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Nueces de cajú enteras y naturales.',
+        ingredients: '100% nuez de cajú.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 100g', price: 15.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/nueces-de-caju-100g-6870000.jpg?v=1789347614&width=1100'
+      },
+      {
+        id: 'ala-22',
+        name: 'Canela en Polvo',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Canela pura molida aromática.',
+        ingredients: '100% canela.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Frasco 50g', price: 17.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/canela-en-polvo-50g-5929070.jpg?v=1789347670&width=1500'
+      },
+      {
+        id: 'ala-23',
+        name: 'Semillas de Girasol',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Semillas de girasol peladas listas para ensaladas, granolas o snacks.',
+        ingredients: '100% semillas de girasol.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 100g', price: 12.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/semillas-de-girasol-100g-9925204.png?v=1789347610&width=1000'
+      },
+      {
+        id: 'ala-24',
+        name: 'Harina de Avena',
+        brand: 'La Purita',
+        category: 'Alacena y Superfoods',
+        description: 'Harina fina de avena sin gluten para panqueques, queques y panes.',
+        ingredients: '100% harina de avena.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Bolsa 800g', price: 27.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/harina-de-avena-800g-2204634.jpg?v=1789347492&width=1100'
+      },
+
+      // ==================== BEBIDAS VEGETALES ====================
+      {
+        id: 'beb-01',
+        name: 'Concentrado Bebida Almendra Vainilla (Sachets)',
+        brand: 'La Purita',
+        category: 'Bebidas Vegetales',
+        description: 'Caja con 5 sachets concentrados. Solo licúa con agua para obtener hasta 2.5 litros de leche de almendras con vainilla.',
+        ingredients: 'Almendras, panela orgánica, extracto de vainilla.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Caja 5 sachets / 250g (Rinde 2.5L)', price: 33.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/concentrado-de-bebida-de-almendras-vainilla-sachet-25-l-3984149.png?v=1789347492&width=1000'
+      },
+      {
+        id: 'beb-02',
+        name: 'Concentrado Bebida Almendra Chocolate (Sachets)',
+        brand: 'La Purita',
+        category: 'Bebidas Vegetales',
+        description: 'Caja con 5 sachets concentrados para preparar 2.5 litros de bebida vegetal de almendras y cacao.',
+        ingredients: 'Almendras, panela orgánica, cacao en polvo.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Caja 5 sachets / 250g (Rinde 2.5L)', price: 33.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/concentrado-de-bebida-de-almendras-chocolate-sachet-25-l-5976883.png?v=1789347492&width=1000'
+      },
+      {
+        id: 'beb-03',
+        name: 'Concentrado Bebida 100% Almendras (Sachets)',
+        brand: 'La Purita',
+        category: 'Bebidas Vegetales',
+        description: '100% almendras y nada más. Cada sachet rinde 1 litro de bebida vegetal fresca sin gomas ni preservantes.',
+        ingredients: '100% almendras.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [
+          { label: 'Caja 1 sachet / 66g (Rinde 1L)', price: 13.00 },
+          { label: 'Caja 3 sachets / 198g (Rinde 3L)', price: 33.00 }
+        ],
+        image: 'https://www.lapurita.com/cdn/shop/files/concentrado-de-bebida-de-almendras-sachets-3l-8565565.jpg?v=1789347612&width=1000'
+      },
+      {
+        id: 'beb-04',
+        name: 'Bebida de Almendra con Vainilla (Frasco)',
+        brand: 'La Purita',
+        category: 'Bebidas Vegetales',
+        description: 'Concentrado en frasco de vidrio que rinde hasta 4 litros de bebida de almendras con vainilla.',
+        ingredients: 'Almendras, panela, esencia natural de vainilla.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 400g (Rinde 4L)', price: 44.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/concentrado-de-bebida-de-almendras-vainilla-frasco-4l-5731574.jpg?v=1789347489&width=1100'
+      },
+      {
+        id: 'beb-05',
+        name: 'Bebida de Almendra con Chocolate (Frasco)',
+        brand: 'La Purita',
+        category: 'Bebidas Vegetales',
+        description: 'Concentrado en frasco de vidrio que rinde 4 litros de chocolatada vegetal de almendras.',
+        ingredients: 'Almendras, panela, cacao en polvo.',
+        tags: ['Sin Gluten', 'Vegano'],
+        variants: [{ label: 'Frasco 400g (Rinde 4L)', price: 44.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/concentrado-de-bebida-de-almendras-chocolate-frasco-4l-5922744.jpg?v=1789347491&width=1100'
+      },
+      {
+        id: 'beb-06',
+        name: 'Bebida de Almendra 100% (Frasco)',
+        brand: 'La Purita',
+        category: 'Bebidas Vegetales',
+        description: 'Concentrado puro de almendras en frasco de vidrio para preparar leche vegetal al instante.',
+        ingredients: '100% almendras.',
+        tags: ['Sin Gluten', 'Vegano', 'Sin Azúcar'],
+        variants: [{ label: 'Frasco 170g (Rinde 3L)', price: 33.00 }],
+        image: 'https://www.lapurita.com/cdn/shop/files/concentrando-de-bebida-de-almendras-frasco-3l-7202045.jpg?v=1789347552&width=1100'
+      }
+    ];
+
+    // Categorías en orden
+    const CATEGORIES = [
+      { id: 'Todas', label: 'Todos los Productos', icon: '🌿' },
+      { id: 'Snacks Saludables', label: 'Snacks Saludables', icon: '🍿' },
+      { id: 'Packs Lonchera', label: 'Packs Lonchera', icon: '🎒' },
+      { id: 'Galletas La Purita', label: 'Galletas La Purita', icon: '🍪' },
+      { id: 'Cereales y Granola', label: 'Cereales y Granola', icon: '🥣' },
+      { id: 'Chocolates y Chocobañados', label: 'Chocolates y Chocobañados', icon: '🍫' },
+      { id: 'Mantequillas y Untables', label: 'Mantequillas y Untables', icon: '🥜' },
+      { id: 'Alacena y Superfoods', label: 'Alacena y Superfoods', icon: '🍯' },
+      { id: 'Bebidas Vegetales', label: 'Bebidas Vegetales', icon: '🥛' },
+    ];
+
+    // 3. ESTADO DE LA APLICACIÓN
+    let state = {
+      searchQuery: '',
+      selectedCategory: 'Todas',
+      selectedBrand: '',
+      selectedTags: [],
+      selectedVariants: {}, // { productId: variantIndex }
+      cart: JSON.parse(localStorage.getItem('organicStoreCart')) || []
+    };
+
+    // Inicializar índice de variante por defecto (0) y galería de imágenes
+    state.selectedImages = {};
+    PRODUCTS.forEach(p => {
+      state.selectedVariants[p.id] = 0;
+      state.selectedImages[p.id] = 0;
+    });
+
+    function getProductImages(product) {
+      if (Array.isArray(product.images) && product.images.length > 0) {
+        return product.images;
+      }
+      if (product.image) {
+        return [product.image];
+      }
+      return [];
+    }
+
+    function switchProductImage(event, productId, imgIdx) {
+      event.stopPropagation();
+      state.selectedImages[productId] = imgIdx;
+      renderProducts();
+    }
+
+    function switchModalImage(productId, imgIdx) {
+      state.selectedImages[productId] = imgIdx;
+      renderProducts();
+      openProductModal(productId);
+    }
+
+    // 4. GENERADOR DE ILUSTRACIONES VECTORIALES PERSONALIZADAS POR CATEGORÍA Y MARCA
+    function getProductArtwork(product) {
+      // Paleta de colores según marca y categoría
+      const brandThemes = {
+        'Del Campo a tu Casa': {
+          bg: '#EEF5F0',
+          accent: '#4C7C59',
+          secondary: '#D99B26',
+          badgeBg: 'bg-leaf text-white'
+        },
+        'La Purita': {
+          bg: '#FBF0EC',
+          accent: '#C86D51',
+          secondary: '#4A3222',
+          badgeBg: 'bg-terracotta text-white'
+        },
+        'Globulitos': {
+          bg: '#FDF2F2',
+          accent: '#C53030',
+          secondary: '#D99B26',
+          badgeBg: 'bg-red-700 text-white'
+        }
+      };
+
+      const theme = brandThemes[product.brand] || brandThemes['Del Campo a tu Casa'];
+
+      // Ilustraciones SVG temáticas por categoría
+      const categorySVGs = {
+        'Snacks Saludables': `
+          <svg viewBox="0 0 120 90" class="w-28 h-20 drop-shadow-xs">
+            <rect x="34" y="14" width="52" height="62" rx="10" fill="${theme.accent}" opacity="0.16"/>
+            <rect x="38" y="18" width="44" height="54" rx="8" fill="#FFF" stroke="${theme.accent}" stroke-width="2.5"/>
+            <path d="M38 30 H82" stroke="${theme.accent}" stroke-width="2" stroke-dasharray="3 2"/>
+            <circle cx="54" cy="48" r="7" fill="${theme.secondary}" opacity="0.85"/>
+            <circle cx="67" cy="44" r="5" fill="${theme.accent}" opacity="0.85"/>
+            <circle cx="62" cy="57" r="6" fill="#E6B85C"/>
+            <path d="M24 62 Q28 52 34 58" stroke="${theme.accent}" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M96 32 Q90 24 85 30" stroke="${theme.secondary}" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>`,
+        'Packs Lonchera': `
+          <svg viewBox="0 0 120 90" class="w-28 h-20 drop-shadow-xs">
+            <rect x="26" y="28" width="68" height="46" rx="12" fill="${theme.accent}" opacity="0.2"/>
+            <rect x="30" y="32" width="60" height="38" rx="9" fill="#FFF" stroke="${theme.accent}" stroke-width="2.5"/>
+            <path d="M48 32 V23 C48 19 52 17 60 17 C68 17 72 19 72 23 V32" fill="none" stroke="${theme.accent}" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="48" cy="51" r="7" fill="${theme.secondary}"/>
+            <circle cx="60" cy="48" r="7" fill="${theme.accent}"/>
+            <circle cx="72" cy="51" r="7" fill="#C86D51"/>
+          </svg>`,
+        'Galletas La Purita': `
+          <svg viewBox="0 0 120 90" class="w-28 h-20 drop-shadow-xs">
+            <circle cx="52" cy="48" r="22" fill="#E8C391" stroke="#4A3222" stroke-width="2.5"/>
+            <circle cx="45" cy="42" r="2.2" fill="#4A3222"/>
+            <circle cx="58" cy="45" r="2.2" fill="#4A3222"/>
+            <circle cx="50" cy="55" r="2.2" fill="#4A3222"/>
+            <circle cx="72" cy="44" r="19" fill="#FFF" stroke="${theme.accent}" stroke-width="2.5"/>
+            <path d="M62 44 H82 M72 34 V54" stroke="${theme.accent}" stroke-width="2" opacity="0.4"/>
+            <circle cx="72" cy="44" r="8" fill="${theme.accent}" opacity="0.25"/>
+          </svg>`,
+        'Cereales y Granola': `
+          <svg viewBox="0 0 120 90" class="w-28 h-20 drop-shadow-xs">
+            <path d="M28 44 C28 64 42 74 60 74 C78 74 92 64 92 44 Z" fill="#FFF" stroke="${theme.accent}" stroke-width="2.5"/>
+            <path d="M33 44 C38 35 48 34 56 38 C63 32 76 34 86 44" fill="#E8C391" stroke="#4A3222" stroke-width="2"/>
+            <circle cx="48" cy="39" r="3" fill="${theme.accent}"/>
+            <circle cx="62" cy="37" r="3.5" fill="${theme.secondary}"/>
+            <circle cx="73" cy="40" r="3" fill="#4A3222"/>
+            <path d="M76 34 L94 20" stroke="#4A3222" stroke-width="3" stroke-linecap="round"/>
+          </svg>`,
+        'Chocolates y Chocobañados': `
+          <svg viewBox="0 0 120 90" class="w-28 h-20 drop-shadow-xs">
+            <rect x="34" y="18" width="52" height="54" rx="8" fill="#4A3222"/>
+            <rect x="40" y="24" width="18" height="18" rx="3" fill="#6B4B36"/>
+            <rect x="62" y="24" width="18" height="18" rx="3" fill="#6B4B36"/>
+            <rect x="40" y="46" width="18" height="18" rx="3" fill="#6B4B36"/>
+            <rect x="62" y="46" width="18" height="18" rx="3" fill="#6B4B36"/>
+            <circle cx="84" cy="24" r="11" fill="${theme.accent}"/>
+            <text x="84" y="27" text-anchor="middle" fill="#FFF" font-size="8" font-weight="bold">70%</text>
+          </svg>`,
+        'Mantequillas y Untables': `
+          <svg viewBox="0 0 120 90" class="w-28 h-20 drop-shadow-xs">
+            <rect x="40" y="26" width="40" height="48" rx="10" fill="#FFF" stroke="#4A3222" stroke-width="2.5"/>
+            <rect x="37" y="18" width="46" height="9" rx="4" fill="${theme.accent}"/>
+            <rect x="43" y="38" width="34" height="24" rx="4" fill="#E6B85C" opacity="0.45"/>
+            <ellipse cx="60" cy="50" rx="10" ry="7" fill="${theme.secondary}"/>
+          </svg>`,
+        'Alacena y Superfoods': `
+          <svg viewBox="0 0 120 90" class="w-28 h-20 drop-shadow-xs">
+            <path d="M42 24 H78 L84 68 C84 72 80 75 75 75 H45 C40 75 36 72 36 68 Z" fill="#FFF" stroke="${theme.accent}" stroke-width="2.5"/>
+            <path d="M40 24 H80" stroke="#4A3222" stroke-width="3" stroke-linecap="round"/>
+            <path d="M60 40 C52 46 52 57 60 62 C68 57 68 46 60 40 Z" fill="${theme.accent}"/>
+            <path d="M60 44 V60" stroke="#FFF" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>`,
+        'Bebidas Vegetales': `
+          <svg viewBox="0 0 120 90" class="w-28 h-20 drop-shadow-xs">
+            <rect x="42" y="24" width="36" height="50" rx="6" fill="#FFF" stroke="#2B9EB3" stroke-width="2.5"/>
+            <polygon points="42,24 60,13 78,24" fill="#2B9EB3" opacity="0.25" stroke="#2B9EB3" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M60 39 C53 47 53 56 60 61 C67 56 67 47 60 39 Z" fill="#D99B26"/>
+            <circle cx="60" cy="52" r="3" fill="#FFF" opacity="0.7"/>
+          </svg>`
+      };
+
+      return {
+        svg: categorySVGs[product.category] || categorySVGs['Snacks Saludables'],
+        theme
+      };
+    }
+
+    // 5. FORMATEO DE MONEDA EN SOLES PERUANOS
+    function formatPEN(amount) {
+      return `S/. ${amount.toFixed(2)}`;
+    }
+
+    // 6. RENDERIZAR PESTAÑAS DE CATEGORÍAS
+    function renderCategories() {
+      const container = document.getElementById('categoryTabs');
+      container.innerHTML = CATEGORIES.map(cat => {
+        const isActive = state.selectedCategory === cat.id;
+        return `
+          <button
+            onclick="selectCategory('${cat.id}')"
+            class="shrink-0 px-3.5 py-2 rounded-2xl text-xs font-semibold transition flex items-center gap-1.5 border ${
+              isActive
+                ? 'bg-cacao text-cream border-cacao shadow-xs'
+                : 'bg-white text-cacao border-cacao/10 hover:border-cacao/30'
+            }"
+          >
+            <span>${cat.icon}</span>
+            <span>${cat.label}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    // 7. FILTRAR PRODUCTOS
+    function getFilteredProducts() {
+      const q = state.searchQuery.trim().toLowerCase();
+      return PRODUCTS.filter(product => {
+        // Filtro por categoría
+        if (state.selectedCategory !== 'Todas' && product.category !== state.selectedCategory) {
+          return false;
+        }
+        // Filtro por marca
+        if (state.selectedBrand && product.brand !== state.selectedBrand) {
+          return false;
+        }
+        // Filtro por etiquetas dietéticas
+        if (state.selectedTags.length > 0) {
+          const hasAllTags = state.selectedTags.every(tag => product.tags.includes(tag));
+          if (!hasAllTags) return false;
+        }
+        // Búsqueda por nombre, marca, categoría, descripción o ingredientes
+        if (q) {
+          const searchable = `${product.name} ${product.brand} ${product.category} ${product.description} ${product.ingredients} ${product.tags.join(' ')}`.toLowerCase();
+          if (!searchable.includes(q)) return false;
+        }
+        return true;
+      });
+    }
+
+    // 8. RENDERIZAR GRID DE PRODUCTOS
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      const emptyState = document.getElementById('emptyState');
+      const resultsCount = document.getElementById('resultsCount');
+      const resetBtn = document.getElementById('resetFiltersBtn');
+
+      const filtered = getFilteredProducts();
+      resultsCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'producto encontrado' : 'productos encontrados'}`;
+
+      const hasFilters = state.searchQuery || state.selectedCategory !== 'Todas' || state.selectedBrand || state.selectedTags.length > 0;
+      resetBtn.classList.toggle('hidden', !hasFilters);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(product => {
+        const selectedIdx = state.selectedVariants[product.id] || 0;
+        const activeVariant = product.variants[selectedIdx];
+        const { svg, theme } = getProductArtwork(product);
+
+        // Etiquetas visuales
+        const tagBadges = product.tags.slice(0, 3).map(tag => {
+          let style = 'bg-sand text-cacaoLight';
+          if (tag === 'Sin Gluten') style = 'bg-amber-100/80 text-amber-900';
+          if (tag === 'Vegano') style = 'bg-emerald-100/80 text-emerald-900';
+          if (tag === 'Sin Azúcar') style = 'bg-sky-100/80 text-sky-900';
+          if (tag === 'Alto en Hierro') style = 'bg-red-100/90 text-red-900';
+          return `<span class="px-2 py-0.5 rounded-lg text-[10px] font-semibold ${style}">${tag}</span>`;
+        }).join('');
+
+        // Selector de presentaciones si tiene más de 1 variante
+        const variantSelectorHTML = product.variants.length > 1
+          ? `
+            <div class="mt-2.5">
+              <label class="block text-[10px] font-semibold text-cacaoLight uppercase tracking-wider mb-1">Presentación:</label>
+              <div class="flex flex-wrap gap-1.5">
+                ${product.variants.map((v, idx) => `
+                  <button
+                    type="button"
+                    onclick="changeProductVariant('${product.id}', ${idx})"
+                    class="px-2.5 py-1 rounded-xl text-[11px] font-semibold border transition ${
+                      idx === selectedIdx
+                        ? 'bg-cacao text-cream border-cacao'
+                        : 'bg-cream text-cacao border-cacao/15 hover:border-cacao/40'
+                    }"
+                  >
+                    ${v.label}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+          `
+          : `<p class="mt-2 text-xs text-cacaoLight font-medium">📦 ${activeVariant.label}</p>`;
+
+        return `
+          <article class="bg-white rounded-3xl border border-cacao/10 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col justify-between group">
+            <div>
+              <!-- Cabecera visual con ilustración vectorial -->
+              <div
+                onclick="openProductModal('${product.id}')"
+                style="background-color: ${theme.bg};"
+                class="relative p-4 flex flex-col items-center justify-center cursor-pointer border-b border-cacao/5"
+              >
+                <div class="w-full flex items-center justify-between mb-1">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wide ${theme.badgeBg}">
+                    ${product.brand}
+                  </span>
+                  ${product.badge ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-ochre text-white">${product.badge}</span>` : ''}
+                </div>
+
+                ${(() => {
+                  const imgs = getProductImages(product);
+                  const activeImgIdx = state.selectedImages[product.id] || 0;
+                  const currentImg = imgs[activeImgIdx];
+                  return `
+                    <div class="my-1 transform group-hover:scale-105 transition duration-300 flex flex-col items-center justify-center h-28 w-full">
+                      ${
+                        currentImg
+                          ? `<img src="${currentImg}" alt="${product.name} (${activeImgIdx + 1})" class="h-24 w-24 object-contain rounded-xl drop-shadow-xs" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div style="display:none;">${svg}</div>`
+                          : svg
+                      }
+                      ${
+                        imgs.length > 1
+                          ? `<div class="flex items-center gap-1.5 mt-1.5 z-10">
+                              ${imgs.map((_, i) => `
+                                <button
+                                  type="button"
+                                  onclick="switchProductImage(event, '${product.id}', ${i})"
+                                  title="Ver foto ${i + 1}"
+                                  class="w-2.5 h-2.5 rounded-full transition ${i === activeImgIdx ? 'bg-cacao scale-110' : 'bg-cacao/30 hover:bg-cacao/60'}"
+                                ></button>
+                              `).join('')}
+                            </div>`
+                          : ''
+                      }
+                    </div>
+                  `;
+                })()}
+
+                <span class="text-[11px] font-medium text-cacaoLight/80 group-hover:text-cacao transition">
+                  Ver ingredientes →
+                </span>
+              </div>
+
+              <!-- Cuerpo de información -->
+              <div class="p-4">
+                <p class="text-[11px] font-medium text-leafDark">${product.category}</p>
+                <h3
+                  onclick="openProductModal('${product.id}')"
+                  class="font-serif font-bold text-base text-cacao leading-snug mt-0.5 cursor-pointer hover:text-terracotta transition"
+                >
+                  ${product.name}
+                </h3>
+
+                <div class="flex flex-wrap gap-1 mt-2">
+                  ${tagBadges}
+                </div>
+
+                <p class="text-xs text-cacaoLight/90 mt-2 line-clamp-2">
+                  ${product.description}
+                </p>
+
+                ${variantSelectorHTML}
+              </div>
+            </div>
+
+            <!-- Precio y Botón Agregar -->
+            <div class="px-4 pb-4 pt-2 flex items-center justify-between gap-2 border-t border-cacao/5 mt-auto">
+              <div>
+                <span class="block text-[10px] text-cacaoLight">Precio</span>
+                <span class="font-serif font-bold text-lg text-cacao">${formatPEN(activeVariant.price)}</span>
+              </div>
+
+              <button
+                type="button"
+                onclick="addToCart('${product.id}')"
+                class="px-3.5 py-2.5 rounded-2xl bg-leaf hover:bg-leafDark text-white text-xs font-semibold shadow-xs transition flex items-center gap-1.5 active:scale-95"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                </svg>
+                <span>Agregar</span>
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // 9. ACCIONES DE FILTROS Y VARIANTES
+    function selectCategory(categoryId) {
+      state.selectedCategory = categoryId;
+      renderCategories();
+      renderProducts();
+    }
+
+    function filterByBrand(brandName) {
+      if (state.selectedBrand === brandName) {
+        state.selectedBrand = '';
+      } else {
+        state.selectedBrand = brandName;
+      }
+      updateBrandChipsUI();
+      renderProducts();
+    }
+
+    function updateBrandChipsUI() {
+      document.querySelectorAll('.brand-chip').forEach(btn => {
+        const isSelected = state.selectedBrand && btn.textContent.includes(state.selectedBrand);
+        btn.classList.toggle('ring-2', isSelected);
+        btn.classList.toggle('ring-cacao', isSelected);
+        btn.classList.toggle('bg-sand', isSelected);
+      });
+    }
+
+    function toggleDietaryTag(tag) {
+      const index = state.selectedTags.indexOf(tag);
+      if (index > -1) {
+        state.selectedTags.splice(index, 1);
+      } else {
+        state.selectedTags.push(tag);
+      }
+      updateTagButtonsUI();
+      renderProducts();
+    }
+
+    function updateTagButtonsUI() {
+      document.querySelectorAll('.tag-btn').forEach(btn => {
+        const tag = btn.getAttribute('data-tag');
+        const active = state.selectedTags.includes(tag);
+        if (active) {
+          btn.classList.remove('bg-white', 'text-cacao', 'border-cacao/15');
+          btn.classList.add('bg-leaf', 'text-white', 'border-leaf');
+        } else {
+          btn.classList.add('bg-white', 'text-cacao', 'border-cacao/15');
+          btn.classList.remove('bg-leaf', 'text-white', 'border-leaf');
+        }
+      });
+    }
+
+    function resetAllFilters() {
+      state.searchQuery = '';
+      state.selectedCategory = 'Todas';
+      state.selectedBrand = '';
+      state.selectedTags = [];
+      document.getElementById('searchInputDesktop').value = '';
+      document.getElementById('searchInputMobile').value = '';
+      document.getElementById('clearSearchDesktop').classList.add('hidden');
+      document.getElementById('clearSearchMobile').classList.add('hidden');
+      updateBrandChipsUI();
+      updateTagButtonsUI();
+      renderCategories();
+      renderProducts();
+    }
+
+    function changeProductVariant(productId, variantIndex) {
+      state.selectedVariants[productId] = variantIndex;
+      renderProducts();
+    }
+
+    // 10. MODAL DE DETALLE DE PRODUCTO
+    function openProductModal(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const selectedIdx = state.selectedVariants[product.id] || 0;
+      const activeVariant = product.variants[selectedIdx];
+      const { svg, theme } = getProductArtwork(product);
+
+      const modal = document.getElementById('productModal');
+      const content = document.getElementById('productModalContent');
+
+      content.innerHTML = `
+        <div style="background-color: ${theme.bg};" class="p-6 relative flex flex-col items-center border-b border-cacao/10">
+          <button onclick="closeProductModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/80 hover:bg-white text-cacao flex items-center justify-center shadow-xs font-bold">
+            ✕
+          </button>
+          <span class="px-3 py-1 rounded-full text-xs font-bold ${theme.badgeBg} mb-2">
+            ${product.brand}
+          </span>
+          ${(() => {
+            const imgs = getProductImages(product);
+            const activeImgIdx = state.selectedImages[product.id] || 0;
+            const currentImg = imgs[activeImgIdx];
+            return `
+              <div class="my-2 flex flex-col items-center justify-center">
+                ${
+                  currentImg
+                    ? `<img src="${currentImg}" alt="${product.name} (${activeImgIdx + 1})" class="h-40 w-40 object-contain rounded-2xl shadow-xs bg-white p-2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div style="display:none;" class="scale-110">${svg}</div>`
+                    : `<div class="scale-110">${svg}</div>`
+                }
+                ${
+                  imgs.length > 1
+                    ? `<div class="flex items-center gap-2 mt-3">
+                        ${imgs.map((src, i) => `
+                          <button
+                            type="button"
+                            onclick="switchModalImage('${product.id}', ${i})"
+                            class="w-12 h-12 rounded-xl bg-white p-1 border-2 transition overflow-hidden ${i === activeImgIdx ? 'border-cacao shadow-xs scale-105' : 'border-transparent opacity-70 hover:opacity-100'}"
+                          >
+                            <img src="${src}" alt="Miniatura ${i + 1}" class="w-full h-full object-contain" />
+                          </button>
+                        `).join('')}
+                      </div>`
+                    : ''
+                }
+              </div>
+            `;
+          })()}
+        </div>
+
+        <div class="p-6 space-y-4">
+          <div>
+            <span class="text-xs font-semibold text-leafDark uppercase tracking-wider">${product.category}</span>
+            <h3 class="font-serif text-2xl font-bold text-cacao mt-0.5">${product.name}</h3>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5">
+            ${product.tags.map(t => `<span class="px-2.5 py-1 rounded-xl text-xs font-semibold bg-sand text-cacao">${t}</span>`).join('')}
+          </div>
+
+          <p class="text-sm text-cacaoLight leading-relaxed">
+            ${product.description}
+          </p>
+
+          <div class="bg-sand/70 rounded-2xl p-4 border border-cacao/10">
+            <h4 class="text-xs font-bold text-cacao uppercase tracking-wider mb-1">🌿 Ingredientes y Detalles</h4>
+            <p class="text-xs text-cacaoLight leading-relaxed">${product.ingredients}</p>
+          </div>
+
+          <!-- Selector de presentación en Modal -->
+          <div>
+            <label class="block text-xs font-bold text-cacao mb-1.5">Elige presentación:</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              ${product.variants.map((v, idx) => `
+                <button
+                  type="button"
+                  onclick="selectModalVariant('${product.id}', ${idx})"
+                  class="p-3 rounded-2xl border text-left transition flex items-center justify-between ${
+                    idx === selectedIdx
+                      ? 'bg-cacao text-cream border-cacao shadow-xs'
+                      : 'bg-white text-cacao border-cacao/15 hover:border-cacao'
+                  }"
+                >
+                  <span class="text-xs font-semibold">${v.label}</span>
+                  <span class="text-xs font-bold">${formatPEN(v.price)}</span>
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-cacao/10 flex items-center justify-between gap-4">
+            <div>
+              <span class="text-xs text-cacaoLight block">Total presentación</span>
+              <span class="font-serif text-2xl font-bold text-cacao">${formatPEN(activeVariant.price)}</span>
+            </div>
+
+            <button
+              type="button"
+              onclick="addToCart('${product.id}'); closeProductModal();"
+              class="flex-1 py-3.5 px-5 rounded-2xl bg-leaf hover:bg-leafDark text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2"
+            >
+              <span>+ Agregar a mi canasta</span>
+            </button>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function selectModalVariant(productId, idx) {
+      state.selectedVariants[productId] = idx;
+      renderProducts();
+      openProductModal(productId);
+    }
+
+    function closeProductModal() {
+      const modal = document.getElementById('productModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // 11. LÓGICA DEL CARRITO DE COMPRAS
+    function saveCart() {
+      localStorage.setItem('organicStoreCart', JSON.stringify(state.cart));
+    }
+
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const variantIdx = state.selectedVariants[productId] || 0;
+      const variant = product.variants[variantIdx];
+      const cartItemKey = `${product.id}_${variantIdx}`;
+
+      const existingItem = state.cart.find(item => item.key === cartItemKey);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        state.cart.push({
+          key: cartItemKey,
+          productId: product.id,
+          name: product.name,
+          brand: product.brand,
+          variantLabel: variant.label,
+          price: variant.price,
+          quantity: 1
+        });
+      }
+
+      saveCart();
+      updateCartUI();
+      showToast(`Agregado: ${product.name} (${variant.label})`);
+    }
+
+    function updateCartQuantity(key, delta) {
+      const idx = state.cart.findIndex(item => item.key === key);
+      if (idx === -1) return;
+
+      state.cart[idx].quantity += delta;
+      if (state.cart[idx].quantity <= 0) {
+        state.cart.splice(idx, 1);
+      }
+      saveCart();
+      updateCartUI();
+    }
+
+    function clearCart() {
+      state.cart = [];
+      saveCart();
+      updateCartUI();
+      showToast('Canasta vaciada', '🗑️');
+    }
+
+    function updateCartUI() {
+      const badge = document.getElementById('cartBadge');
+      const subtitle = document.getElementById('cartHeaderSubtitle');
+      const container = document.getElementById('cartItemsContainer');
+      const checkoutForm = document.getElementById('checkoutFormSection');
+      const footer = document.getElementById('cartFooter');
+      const subtotalEl = document.getElementById('cartSubtotal');
+
+      const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+      const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+      badge.textContent = totalItems;
+      subtitle.textContent = `${totalItems} ${totalItems === 1 ? 'producto seleccionado' : 'productos seleccionados'}`;
+      subtotalEl.textContent = formatPEN(subtotal);
+
+      if (state.cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 px-4">
+            <div class="w-16 h-16 mx-auto mb-3 rounded-3xl bg-sand flex items-center justify-center text-3xl">🧺</div>
+            <h4 class="font-serif font-bold text-base text-cacao">Tu canasta está vacía</h4>
+            <p class="text-xs text-cacaoLight mt-1">Explora nuestros snacks, galletas y superfoods para armar tu pedido saludable.</p>
+          </div>
+        `;
+        checkoutForm.classList.add('hidden');
+        footer.classList.add('hidden');
+        return;
+      }
+
+      checkoutForm.classList.remove('hidden');
+      footer.classList.remove('hidden');
+
+      container.innerHTML = state.cart.map(item => `
+        <div class="bg-white rounded-2xl p-3.5 border border-cacao/10 flex items-center justify-between gap-3 shadow-2xs">
+          <div class="min-w-0 flex-1">
+            <span class="text-[10px] font-bold text-leafDark uppercase">${item.brand}</span>
+            <h5 class="text-xs font-bold text-cacao truncate">${item.name}</h5>
+            <p class="text-[11px] text-cacaoLight">${item.variantLabel} • ${formatPEN(item.price)} c/u</p>
+            <p class="text-xs font-bold text-terracotta mt-0.5">${formatPEN(item.price * item.quantity)}</p>
+          </div>
+
+          <div class="flex items-center gap-1.5 bg-sand rounded-xl p-1 shrink-0">
+            <button
+              type="button"
+              onclick="updateCartQuantity('${item.key}', -1)"
+              class="w-7 h-7 rounded-lg bg-white text-cacao font-bold text-sm hover:bg-cacao hover:text-white transition flex items-center justify-center"
+            >−</button>
+            <span class="w-6 text-center text-xs font-bold text-cacao">${item.quantity}</span>
+            <button
+              type="button"
+              onclick="updateCartQuantity('${item.key}', 1)"
+              class="w-7 h-7 rounded-lg bg-white text-cacao font-bold text-sm hover:bg-cacao hover:text-white transition flex items-center justify-center"
+            >+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 12. GENERACIÓN DEL MENSAJE Y ENVÍO POR WHATSAPP
+    function buildWhatsAppMessage() {
+      const name = document.getElementById('customerName').value.trim();
+      const address = document.getElementById('customerAddress').value.trim();
+      const note = document.getElementById('customerNote').value.trim();
+      const paymentEl = document.querySelector('input[name="paymentMethod"]:checked');
+      const payment = paymentEl ? paymentEl.value : 'Yape';
+
+      const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+      let lines = [
+        `🌿 *NUEVO PEDIDO - ${storeConfig.storeName.toUpperCase()}* 🌿`,
+        ``,
+        `👤 *Cliente:* ${name || 'No especificado'}`,
+        `📍 *Dirección / Distrito:* ${address || 'Por coordinar'}`,
+        `💳 *Método de pago:* ${payment}`,
+      ];
+
+      if (note) {
+        lines.push(`📝 *Nota:* ${note}`);
+      }
+
+      lines.push(``, `🛒 *Detalle del pedido:*`);
+
+      state.cart.forEach(item => {
+        lines.push(`• ${item.quantity}x ${item.name} (${item.variantLabel}) — *${formatPEN(item.price * item.quantity)}*`);
+      });
+
+      lines.push(
+        ``,
+        `💰 *TOTAL ESTIMADO: ${formatPEN(subtotal)}*`,
+        `_(Costo de delivery por confirmar según distrito)_`,
+        ``,
+        `¡Muchas gracias! Quedo atento(a) a la confirmación.`
+      );
+
+      return lines.join('\n');
+    }
+
+    function sendOrderViaWhatsApp() {
+      if (state.cart.length === 0) return;
+
+      const nameInput = document.getElementById('customerName');
+      const addressInput = document.getElementById('customerAddress');
+
+      if (!nameInput.value.trim()) {
+        nameInput.focus();
+        showToast('Por favor ingresa tu nombre para el pedido', '⚠️');
+        return;
+      }
+      if (!addressInput.value.trim()) {
+        addressInput.focus();
+        showToast('Ingresa tu distrito o dirección de entrega', '⚠️');
+        return;
+      }
+
+      const message = buildWhatsAppMessage();
+      const cleanPhone = storeConfig.whatsapp.replace(/\D/g, '');
+      const url = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+
+    function copyOrderText() {
+      const message = buildWhatsAppMessage();
+      const textarea = document.createElement('textarea');
+      textarea.value = message;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast('Pedido copiado al portapapeles', '📋');
+      } catch (err) {
+        showToast('No se pudo copiar el texto', '⚠️');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // 13. DRAWER Y MODALES
+    function openCartDrawer() {
+      document.getElementById('cartOverlay').classList.remove('hidden');
+      document.getElementById('cartDrawer').classList.remove('translate-x-full');
+    }
+
+    function closeCartDrawer() {
+      document.getElementById('cartOverlay').classList.add('hidden');
+      document.getElementById('cartDrawer').classList.add('translate-x-full');
+    }
+
+    function openSettingsModal() {
+      document.getElementById('settingStoreName').value = storeConfig.storeName;
+      document.getElementById('settingWhatsapp').value = storeConfig.whatsapp;
+      const modal = document.getElementById('settingsModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSettingsModal() {
+      const modal = document.getElementById('settingsModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function applyStoreConfig() {
+      document.getElementById('headerStoreName').textContent = storeConfig.storeName;
+      document.getElementById('footerStoreName').textContent = storeConfig.storeName;
+      document.title = `${storeConfig.storeName} — Catálogo Orgánico Perú`;
+      document.getElementById('drawerWhatsappDisplay').textContent = `+${storeConfig.whatsapp}`;
+    }
+
+    // Toast helper
+    let toastTimeout;
+    function showToast(msg, icon = '✅') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMessage').textContent = msg;
+      document.getElementById('toastIcon').textContent = icon;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 2600);
+    }
+
+    // 14. EVENT LISTENERS INICIALES
+    document.addEventListener('DOMContentLoaded', () => {
+      applyStoreConfig();
+      renderCategories();
+      renderProducts();
+      updateCartUI();
+
+      // Buscadores (Escritorio y Móvil sincronizados)
+      const searchDesktop = document.getElementById('searchInputDesktop');
+      const searchMobile = document.getElementById('searchInputMobile');
+      const clearDesktop = document.getElementById('clearSearchDesktop');
+      const clearMobile = document.getElementById('clearSearchMobile');
+
+      function handleSearch(val) {
+        state.searchQuery = val;
+        searchDesktop.value = val;
+        searchMobile.value = val;
+        clearDesktop.classList.toggle('hidden', !val);
+        clearMobile.classList.toggle('hidden', !val);
+        renderProducts();
+      }
+
+      searchDesktop.addEventListener('input', e => handleSearch(e.target.value));
+      searchMobile.addEventListener('input', e => handleSearch(e.target.value));
+      clearDesktop.addEventListener('click', () => handleSearch(''));
+      clearMobile.addEventListener('click', () => handleSearch(''));
+
+      // Etiquetas dietéticas
+      document.querySelectorAll('.tag-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          toggleDietaryTag(btn.getAttribute('data-tag'));
+        });
+      });
+
+      document.getElementById('resetFiltersBtn').addEventListener('click', resetAllFilters);
+
+      // Carrito
+      document.getElementById('openCartBtn').addEventListener('click', openCartDrawer);
+      document.getElementById('closeCartBtn').addEventListener('click', closeCartDrawer);
+      document.getElementById('cartOverlay').addEventListener('click', closeCartDrawer);
+      document.getElementById('sendWhatsappBtn').addEventListener('click', sendOrderViaWhatsApp);
+      document.getElementById('copyOrderBtn').addEventListener('click', copyOrderText);
+      document.getElementById('clearCartBtn').addEventListener('click', clearCart);
+
+      // Configuración
+      document.getElementById('openSettingsBtn').addEventListener('click', openSettingsModal);
+      document.getElementById('closeSettingsBtn').addEventListener('click', closeSettingsModal);
+      document.getElementById('cancelSettingsBtn').addEventListener('click', closeSettingsModal);
+
+      document.getElementById('settingsForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const newName = document.getElementById('settingStoreName').value.trim();
+        const newWa = document.getElementById('settingWhatsapp').value.replace(/\D/g, '');
+        if (newName && newWa) {
+          storeConfig = { storeName: newName, whatsapp: newWa };
+          localStorage.setItem('organicStoreConfig', JSON.stringify(storeConfig));
+          applyStoreConfig();
+          closeSettingsModal();
+          showToast('Configuración de tienda actualizada');
+        }
+      });
+
+      // Cerrar modal de producto haciendo clic fuera
+      document.getElementById('productModal').addEventListener('click', e => {
+        if (e.target.id === 'productModal') closeProductModal();
+      });
+    });
+  </script>
+</body>
+</html>
